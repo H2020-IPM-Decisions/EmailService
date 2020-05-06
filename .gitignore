@@ -348,3 +348,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Custom ignores
+.vscode/**
+H2020.IPMDecisions.EML.API/appsettings.json
+H2020.IPMDecisions.EML.API/Controllers/TestController.cs
