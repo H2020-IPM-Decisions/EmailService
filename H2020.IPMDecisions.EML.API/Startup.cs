@@ -32,9 +32,9 @@ namespace H2020.IPMDecisions.EML.API
             services.ConfigureCors(Configuration);
             services.ConfigureContentNegotiation();
             services.ConfigureJwtAuthentication(Configuration);
+            services.ConfigureEmailSettings(Configuration);
 
             services.AddScoped<IEmailSender, EmailSender>();
-
             services.ConfigureSwagger();
         }
 

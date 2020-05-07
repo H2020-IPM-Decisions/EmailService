@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using H2020.IPMDecisions.EML.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -141,6 +142,23 @@ namespace H2020.IPMDecisions.EML.Extensions
                 options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
                 options.HttpsPort = int.Parse(config["ASPNETCORE_HTTPS_PORT"]);
             });
+        }
+
+        public static void ConfigureEmailSettings(this IServiceCollection services, IConfiguration config)
+        {
+            services.Configure<EmailSettings>(options =>{
+                options.SmtpServer = config["EmailSettings:SmtpServer"];
+                options.SmtpPort = int.Parse(config["EmailSettings:SmtpPort"]);
+                options.SmtpUsername = config["EmailSettings:SmtpUsername"];
+                options.SmtpPassword = config["EmailSettings:SmtpPassword"];
+                options.FromAddress = config["EmailSettings:FromAddress"];
+                options.FromName = config["EmailSettings:FromName"];
+                options.EnableSsl = bool.Parse(config["EmailSettings:EnableSsl"]);
+            });
+                
+                
+            
+            // config.GetSection("EmailSettings"));
         }
 
         public static IEnumerable<string> Audiences(string audiences)

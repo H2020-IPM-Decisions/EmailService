@@ -1,22 +1,18 @@
 using System.Threading.Tasks;
 using H2020.IPMDecisions.EML.Core.Interfaces;
+using Microsoft.Extensions.Options;
 using MimeKit;
 
 namespace H2020.IPMDecisions.EML.API.Helpers
 {
     public class EmailSender : IEmailSender
     {
-        private string _smtpServer = "localhost";
-        private int _smtpPort = 2525;
-        private string _fromAddress = "test@test.com";
-        private string _fromAddressTitle = "test";
-        private string _username;
-        private string _password;
-        private bool _enableSsl = false;
-        private bool _useDefaultCredentials;
+        private readonly EmailSettings emailSettings;        
 
-        public EmailSender()
+        public EmailSender(IOptions<EmailSettings> emailSettings)
         {
+            this.emailSettings = emailSettings.Value 
+                ?? throw new System.ArgumentNullException(nameof(emailSettings));
         }
 
         public async Task SendSingleEmailAsync(string toAddress, string subject, string body)
@@ -24,7 +20,7 @@ namespace H2020.IPMDecisions.EML.API.Helpers
             try
             {
                 var mimeMessage = new MimeMessage();
-                mimeMessage.From.Add(new MailboxAddress(_fromAddressTitle, _fromAddress));
+                mimeMessage.From.Add(new MailboxAddress(emailSettings.FromName, emailSettings.FromAddress));
 
                 mimeMessage.To.Add(new MailboxAddress(toAddress));
                 mimeMessage.Subject = subject;
@@ -37,20 +33,16 @@ namespace H2020.IPMDecisions.EML.API.Helpers
 
                 using (var client = new MailKit.Net.Smtp.SmtpClient())
                 {
-                    client.Connect(_smtpServer, _smtpPort, _enableSsl);
+                    client.Connect(emailSettings.SmtpServer, emailSettings.SmtpPort, emailSettings.EnableSsl);
                     // client.Authenticate(_username, _password);
-
                     await client.SendAsync(mimeMessage);
-
                     client.Disconnect(true);
                 }
             }
             catch (System.Exception ex)
-            {
-                
+            {                
                 throw ex;
-            }
-            
+            }            
         }
     }
 }

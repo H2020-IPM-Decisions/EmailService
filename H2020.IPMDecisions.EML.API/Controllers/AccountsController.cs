@@ -26,9 +26,9 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         // POST: api/accounts/registrationemail
         public async Task<IActionResult> RegistrationEmail()
         {
-            var toAddress = "test2@gmai.com";
-            var subject = "Test email";
-            var body = "hello";
+            var toAddress = "ToAddress@test.com";
+            var subject = "This is the subject";
+            var body = "hello Im the body";
 
             await emailSender.SendSingleEmailAsync(toAddress, subject, body);
 
