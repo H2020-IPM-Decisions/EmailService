@@ -13,5 +13,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\H2020.IPMDecisions.EML.Core\H2020.IPMDecisions.EML.Core.csproj" />
+    <ProjectReference Include="..\H2020.IPMDecisions.EML.BLL\H2020.IPMDecisions.EML.BLL.csproj" />
   </ItemGroup>
 </Project>

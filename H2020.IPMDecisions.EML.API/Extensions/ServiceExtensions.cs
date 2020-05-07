@@ -155,10 +155,6 @@ namespace H2020.IPMDecisions.EML.Extensions
                 options.FromName = config["EmailSettings:FromName"];
                 options.EnableSsl = bool.Parse(config["EmailSettings:EnableSsl"]);
             });
-                
-                
-            
-            // config.GetSection("EmailSettings"));
         }
 
         public static IEnumerable<string> Audiences(string audiences)
