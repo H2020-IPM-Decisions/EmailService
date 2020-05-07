@@ -4,6 +4,11 @@
     <ProjectReference Include="..\H2020.IPMDecisions.EML.Core\H2020.IPMDecisions.EML.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.3" />
+    <PackageReference Include="NETCore.MailKit" Version="2.0.2" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>

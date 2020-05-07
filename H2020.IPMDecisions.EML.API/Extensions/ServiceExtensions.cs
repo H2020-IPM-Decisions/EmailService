@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using H2020.IPMDecisions.EML.API.Helpers;
+using H2020.IPMDecisions.EML.BLL.Providers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -146,7 +146,7 @@ namespace H2020.IPMDecisions.EML.Extensions
 
         public static void ConfigureEmailSettings(this IServiceCollection services, IConfiguration config)
         {
-            services.Configure<EmailSettings>(options =>{
+            services.Configure<EmailSettingsProvider>(options =>{
                 options.SmtpServer = config["EmailSettings:SmtpServer"];
                 options.SmtpPort = int.Parse(config["EmailSettings:SmtpPort"]);
                 options.SmtpUsername = config["EmailSettings:SmtpUsername"];

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using H2020.IPMDecisions.EML.BLL.Providers;
 using H2020.IPMDecisions.EML.Core.Interfaces;
 using Microsoft.Extensions.Options;
 using MimeKit;
@@ -7,9 +8,9 @@ namespace H2020.IPMDecisions.EML.API.Helpers
 {
     public class EmailSender : IEmailSender
     {
-        private readonly EmailSettings emailSettings;        
+        private readonly EmailSettingsProvider emailSettings;        
 
-        public EmailSender(IOptions<EmailSettings> emailSettings)
+        public EmailSender(IOptions<EmailSettingsProvider> emailSettings)
         {
             this.emailSettings = emailSettings.Value 
                 ?? throw new System.ArgumentNullException(nameof(emailSettings));

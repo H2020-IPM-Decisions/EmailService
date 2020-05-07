@@ -1,6 +1,6 @@
-namespace H2020.IPMDecisions.EML.API.Helpers
+namespace H2020.IPMDecisions.EML.BLL.Providers
 {
-    public class EmailSettings
+    public class EmailSettingsProvider
     {
         public string SmtpServer { get; set; }
         public int SmtpPort { get; set; }
