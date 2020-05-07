@@ -1,8 +1,8 @@
+using System;
 using System.Net.Mime;
 using System.Threading.Tasks;
-using H2020.IPMDecisions.EML.Core.Interfaces;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
+using H2020.IPMDecisions.EML.BLL;
+using H2020.IPMDecisions.EML.Core.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,24 +13,20 @@ namespace H2020.IPMDecisions.EML.API.Controllers
     // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AccountsController : ControllerBase
     {
-        public IEmailSender emailSender { get; }
-        public AccountsController(IEmailSender emailSender)
+        private readonly IBusinessLogic businessLogic;
+        public AccountsController(IBusinessLogic businessLogic)
         {
-            this.emailSender = emailSender 
-                ?? throw new System.ArgumentNullException(nameof(emailSender));
+            this.businessLogic = businessLogic
+                ?? throw new ArgumentNullException(nameof(businessLogic));
         }
 
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost("RegistrationEmail", Name = "RegistrationEmail")]
         // POST: api/accounts/registrationemail
-        public async Task<IActionResult> RegistrationEmail()
+        public async Task<IActionResult> RegistrationEmail([FromBody] RegistrationEmailDto registrationEmail)
         {
-            var toAddress = "ToAddress@test.com";
-            var subject = "This is the subject";
-            var body = "hello Im the body";
-
-            await emailSender.SendSingleEmailAsync(toAddress, subject, body);
+            await businessLogic.SendRegistrationEmail(registrationEmail);           
 
             return Ok();
         }

@@ -1,12 +1,12 @@
 using H2020.IPMDecisions.EML.Extensions;
-using H2020.IPMDecisions.EML.Core.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using H2020.IPMDecisions.EML.API.Helpers;
+using H2020.IPMDecisions.EML.BLL.Helpers;
+using H2020.IPMDecisions.EML.BLL;
 
 namespace H2020.IPMDecisions.EML.API
 {
@@ -35,6 +35,8 @@ namespace H2020.IPMDecisions.EML.API
             services.ConfigureEmailSettings(Configuration);
 
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IBusinessLogic, BusinessLogic>();
+
             services.ConfigureSwagger();
         }
 

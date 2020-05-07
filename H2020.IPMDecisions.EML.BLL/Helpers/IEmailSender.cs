@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace H2020.IPMDecisions.EML.Core.Interfaces
+namespace H2020.IPMDecisions.EML.BLL.Helpers
 {
     public interface IEmailSender
     {

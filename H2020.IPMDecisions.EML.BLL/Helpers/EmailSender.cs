@@ -1,10 +1,9 @@
 using System.Threading.Tasks;
 using H2020.IPMDecisions.EML.BLL.Providers;
-using H2020.IPMDecisions.EML.Core.Interfaces;
 using Microsoft.Extensions.Options;
 using MimeKit;
 
-namespace H2020.IPMDecisions.EML.API.Helpers
+namespace H2020.IPMDecisions.EML.BLL.Helpers
 {
     public class EmailSender : IEmailSender
     {
@@ -41,7 +40,8 @@ namespace H2020.IPMDecisions.EML.API.Helpers
                 }
             }
             catch (System.Exception ex)
-            {                
+            {
+                // ToDo Log error       
                 throw ex;
             }            
         }
