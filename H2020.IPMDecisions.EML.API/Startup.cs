@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using H2020.IPMDecisions.APG.EML.Extensions;
+using H2020.IPMDecisions.EML.Extensions;
+using H2020.IPMDecisions.EML.Core.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using H2020.IPMDecisions.EML.API.Helpers;
 
 namespace H2020.IPMDecisions.EML.API
 {
@@ -37,6 +32,8 @@ namespace H2020.IPMDecisions.EML.API
             services.ConfigureCors(Configuration);
             services.ConfigureContentNegotiation();
             services.ConfigureJwtAuthentication(Configuration);
+
+            services.AddScoped<IEmailSender, EmailSender>();
 
             services.ConfigureSwagger();
         }
