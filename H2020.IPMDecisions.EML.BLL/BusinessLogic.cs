@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using H2020.IPMDecisions.EML.BLL.Helpers;
 using H2020.IPMDecisions.EML.Core.Dtos;
+using H2020.IPMDecisions.EML.Core.Models;
 
 namespace H2020.IPMDecisions.EML.BLL
 {
@@ -15,7 +16,7 @@ namespace H2020.IPMDecisions.EML.BLL
                 ?? throw new System.ArgumentNullException(nameof(emailSender));
         }
 
-        public async Task SendRegistrationEmail(RegistrationEmailDto registrationEmail)
+        public async Task<GenericResponse> SendRegistrationEmail(RegistrationEmailDto registrationEmail)
         {
             try
             {
@@ -24,11 +25,13 @@ namespace H2020.IPMDecisions.EML.BLL
                 var body = "Welcome to the website, this is your toke" + registrationEmail.RegistrationToken;
 
                 await emailSender.SendSingleEmailAsync(toAddress, subject, body);
+
+                return GenericResponseBuilder.Success();
             }
             catch (Exception ex)            
             {
                 // ToDo log Error         
-                throw ex;
+                return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
             }            
         }
     }

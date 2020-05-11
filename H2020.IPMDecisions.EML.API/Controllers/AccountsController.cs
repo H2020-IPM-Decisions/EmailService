@@ -21,14 +21,18 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         }
 
         [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost("RegistrationEmail", Name = "RegistrationEmail")]
         // POST: api/accounts/registrationemail
         public async Task<IActionResult> RegistrationEmail([FromBody] RegistrationEmailDto registrationEmail)
         {
-            await businessLogic.SendRegistrationEmail(registrationEmail);           
+            var response = await businessLogic.SendRegistrationEmail(registrationEmail);
 
-            return Ok();
+            if (response.IsSuccessful)
+                return Ok();
+
+            return BadRequest(new { message = response.ErrorMessage });
         }
     }
 }
