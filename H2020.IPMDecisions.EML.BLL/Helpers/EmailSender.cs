@@ -24,7 +24,7 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
 
                 mimeMessage.To.Add(new MailboxAddress(toAddress));
                 mimeMessage.Subject = subject;
-                var bodyBuilder = new MimeKit.BodyBuilder
+                var bodyBuilder = new BodyBuilder
                 {
                     HtmlBody = body
                 };

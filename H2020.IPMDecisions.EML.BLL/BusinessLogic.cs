@@ -22,7 +22,10 @@ namespace H2020.IPMDecisions.EML.BLL
             {
                 var toAddress = registrationEmail.ToAddress;
                 var subject = registrationEmail.EmailSubject;
-                var body = "Welcome to the website, this is your toke" + registrationEmail.RegistrationToken;
+
+                var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
+                    "EmailTemplates.RegistrationEmailTemplate",
+                    registrationEmail);
 
                 await emailSender.SendSingleEmailAsync(toAddress, subject, body);
 

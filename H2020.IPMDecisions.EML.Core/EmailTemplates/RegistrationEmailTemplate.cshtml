@@ -1,0 +1,19 @@
+@{ Layout = null; }
+@using RazorLight
+@using H2020.IPMDecisions.EML.Core.Dtos
+@inherits TemplatePage<RegistrationEmailDto>
+
+<!DOCTYPE html>
+<html>
+   <head>
+   </head>
+   <body>
+      <div>
+         <p>Hi @Model.ToAddress,</p>
+      </div>
+      <div>
+         <p>Welcome to IPMDecisions</p>
+         <p>Your token is <strong>@Model.RegistrationToken</strong></p>
+      </div>
+   </body>
+</html>

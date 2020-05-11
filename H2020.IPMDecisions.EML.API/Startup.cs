@@ -34,7 +34,7 @@ namespace H2020.IPMDecisions.EML.API
             services.ConfigureJwtAuthentication(Configuration);
             services.ConfigureEmailSettings(Configuration);
 
-            services.AddScoped<IEmailSender, EmailSender>();
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IBusinessLogic, BusinessLogic>();
 
             services.ConfigureSwagger();
