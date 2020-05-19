@@ -1,6 +1,6 @@
 using System;
-using System.Net.Mime;
 using System.Threading.Tasks;
+using H2020.IPMDecisions.EML.API.Filters;
 using H2020.IPMDecisions.EML.BLL;
 using H2020.IPMDecisions.EML.Core.Dtos;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +11,7 @@ namespace H2020.IPMDecisions.EML.API.Controllers
     [ApiController]
     [Route("api/accounts")]
     [Consumes("application/vnd.h2020ipmdecisions.email+json")]
-    // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [TypeFilter(typeof(RequestHasTokenResourceFilter))]
     public class AccountsController : ControllerBase
     {
         private readonly IBusinessLogic businessLogic;
