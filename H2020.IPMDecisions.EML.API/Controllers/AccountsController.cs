@@ -10,6 +10,7 @@ namespace H2020.IPMDecisions.EML.API.Controllers
 {
     [ApiController]
     [Route("api/accounts")]
+    [Consumes("application/vnd.h2020ipmdecisions.email+json")]
     // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AccountsController : ControllerBase
     {
@@ -18,9 +19,8 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         {
             this.businessLogic = businessLogic
                 ?? throw new ArgumentNullException(nameof(businessLogic));
-        }
-
-        [Consumes(MediaTypeNames.Application.Json)]
+        }    
+        
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost("RegistrationEmail", Name = "RegistrationEmail")]
