@@ -6,12 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="EmailTemplates\ForgotPasswordEmailTemplate.cshtml" />
     <None Remove="EmailTemplates\RegistrationEmailTemplate.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="EmailTemplates\ForgotPasswordEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmailTemplates\RegistrationEmailTemplate.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

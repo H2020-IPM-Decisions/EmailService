@@ -34,5 +34,19 @@ namespace H2020.IPMDecisions.EML.API.Controllers
 
             return BadRequest(new { message = response.ErrorMessage });
         }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost("ForgotPassword", Name = "ForgotPassword")]
+        // POST: api/accounts/registrationemail
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordEmailDto forgotPasswordEmail)
+        {
+            var response = await businessLogic.SendForgotPasswordEmail(forgotPasswordEmail);
+
+            if (response.IsSuccessful)
+                return Ok();
+
+            return BadRequest(new { message = response.ErrorMessage });
+        }
     }
 }

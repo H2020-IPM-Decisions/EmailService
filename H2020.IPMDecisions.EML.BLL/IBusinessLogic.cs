@@ -6,6 +6,7 @@ namespace H2020.IPMDecisions.EML.BLL
 {
     public interface IBusinessLogic
     {
+        Task<GenericResponse> SendForgotPasswordEmail(ForgotPasswordEmailDto forgotPasswordEmail);
         Task<GenericResponse> SendRegistrationEmail(RegistrationEmailDto registrationEmail);
     }
 }
