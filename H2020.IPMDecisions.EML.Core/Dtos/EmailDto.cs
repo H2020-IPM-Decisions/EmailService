@@ -7,5 +7,8 @@ namespace H2020.IPMDecisions.EML.Core.Dtos
         [Required]
         [DataType(DataType.EmailAddress)]
         public string ToAddress { get; set; }
+        [Required]
+        public string CallbackUrl { get; set; }
+        public string Token { get; set; }
     }
 }
