@@ -47,4 +47,4 @@ ENV EmailSettings:FromAddress=""
 ENV EmailSettings:FromName=""
 ENV EmailSettings:EnableSsl=""
 
-ENTRYPOINT ["dotnet", "H2020.IPMDecisions.UPR.API.dll"]
+ENTRYPOINT ["dotnet", "H2020.IPMDecisions.EML.API.dll"]

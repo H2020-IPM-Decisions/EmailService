@@ -34,7 +34,9 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
                 using (var client = new MailKit.Net.Smtp.SmtpClient())
                 {
                     client.Connect(emailSettings.SmtpServer, emailSettings.SmtpPort, emailSettings.EnableSsl);
-                    client.Authenticate(emailSettings.SmtpUsername, emailSettings.SmtpPassword);
+                    if (emailSettings.UseSmtpLoginCredentials)
+                        client.Authenticate(emailSettings.SmtpUsername, emailSettings.SmtpPassword);
+                        
                     await client.SendAsync(mimeMessage);
                     client.Disconnect(true);
                 }

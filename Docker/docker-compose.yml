@@ -1,0 +1,27 @@
+version: "3.7" 
+services:
+     eml.api:
+        image: ipmdecisions/emailservice:develop
+        container_name: eml-api
+        hostname: eml.api
+        restart: always
+        ports:
+            - "80"
+            - "443" 
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=http://+:80
+            - JwtSettings:SecretKey=BFCVbbtvC1QoutaBujROE3cD_sRE3n16ohmM4sUQC0Q
+            - JwtSettings:IssuerServerUrl=IPM_IdentityProvider
+            - JwtSettings:ValidAudiencesUrls=https://testclient.com
+            - IPMEmailMicroservice:ContentTypeHeader=application/vnd.h2020ipmdecisions.email+json
+            - IPMEmailMicroservice:SecurityTokenCustomHeader=ipm-eml-auth 
+            - IPMEmailMicroservice:SecurityToken=1234
+            - EmailSettings:SmtpServer=host.docker.internal
+            - EmailSettings:SmtpPort=2525
+            - EmailSettings:UseSmtpLoginCredentials=false
+            - EmailSettings:SmtpUsername=none
+            - EmailSettings:SmtpPassword=none
+            - EmailSettings:FromAddress=youremail@test.com
+            - EmailSettings:FromName=IPM Decisions
+            - EmailSettings:EnableSsl=false
