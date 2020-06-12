@@ -13,7 +13,7 @@ services:
             - ASPNETCORE_URLS=http://+:80
             - JwtSettings:SecretKey=BFCVbbtvC1QoutaBujROE3cD_sRE3n16ohmM4sUQC0Q
             - JwtSettings:IssuerServerUrl=IPM_IdentityProvider
-            - JwtSettings:ValidAudiencesUrls=https://testclient.com
+            - JwtSettings:ValidAudiences=https://testclient.com
             - IPMEmailMicroservice:ContentTypeHeader=application/vnd.h2020ipmdecisions.email+json
             - IPMEmailMicroservice:SecurityTokenCustomHeader=ipm-eml-auth 
             - IPMEmailMicroservice:SecurityToken=1234
