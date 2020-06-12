@@ -1,0 +1,22 @@
+@{ Layout = null; }
+@using RazorLight
+@using H2020.IPMDecisions.EML.Core.Dtos
+@inherits TemplatePage<RegistrationEmailDto>
+
+<!DOCTYPE html>
+<html>
+   <head>
+   </head>
+   <body>
+      <div>
+         <p>Hi @Model.ToAddress,</p>
+      </div>
+      <div>
+         <p>Welcome to IPM Decisions</p>
+         <p>Click <a href="@Model.CallbackUrl">here</a> to activate your account.</p>
+         <p>Thanks,</p>
+         <p>The IPM Decisions Team</p>
+         <img src="https://www.ipmdecisions.net/media/phdj3qhd/output-onlinepngtools.png" alt="IPM Decisions Logo" width="70" height="70">
+      </div>
+   </body>
+</html>

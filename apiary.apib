@@ -1,0 +1,97 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# H2020 IPM Decisions - Email Service
+
+The H2020 IPM Decisions Email Service is charge of managing sending email from other IPM Decisions microservices and be on charge of the mailing list. 
+
+## Authentication and Authorization
+The API uses a custom security header. This header can be modify when setting up the solution.
+Other microservices will need to provided this header to being able to send emails.
+
+## Contact
+* Name: ADAS Modelling and Informatics Team
+* Url: 'https://www.adas.uk/'
+* Email: software@adas.co.uk
+
+
+# Group Root
+
+## Root [/api]
+
+### Root [GET]
+
+This request allows you to check if the API is working and returns some valid requests.
+
++ Request (application/json)
+
+    + Headers
+    
+            Accept: application/json
+
++ Response 200
+        
+        Success
+
+    + Attributes (array[LinkDto])
+    
+# Group Emails
+
+## Accounts [/api/accounts]
+
+### RegistrationEmail [POST /api/accounts/registrationemail]
+
+This request send an email with a link to the registration page.
+
++ Request (application/vnd.h2020ipmdecisions.email+json)
+
+    + Headers
+    
+            ipm-eml-auth: 1234
+    
+    + Attributes(RegistrationEmailDto)
+            
++ Response 200
+
++ Response 400
+
+        message
+        
+### RegistrationEmail [POST /api/accounts/forgotpassword]
+
+This request send an email with a link to the reset password page.
+
++ Request (application/vnd.h2020ipmdecisions.email+json)
+
+    + Headers
+    
+            ipm-eml-auth: 1234
+    
+    + Attributes(ForgotPasswordEmailDto)
+            
++ Response 200
+
++ Response 400
+
+        message
+    
+# Data Structures
+
+## ForgotPasswordEmailDto (object)
+### Properties
++ `toAddress` (string) 
++ `forgotPasswordUrl` (string)
+
+## LinkDto (object)
+### Properties
++ `href` (string)
++ `rel` (enum[string]) 
+    + `self` 
+    + `next_page`
+    + `previous_page`
++ `method` (string)
+
+## RegistrationEmailDto (object)
+### Properties
++ `toAddress` (string) 
++ `confirmEmailUrl` (string)

@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>0.1.0.0</Version>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
+    <Authors>ADAS Modelling and Informatics Team</Authors>
+    <Company>RSK ADAS Ltd</Company>
+    <Product>H2020 IPM Decisions Email Service</Product>
+    <PackageId>H2020.IPMDecisions.EML.Core</PackageId>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Description>Service in charge of emails for the H2020 IPM Decisions project.</Description>
+    <Copyright>Under GNU GENERAL PUBLIC LICENSE</Copyright>
+    <PackageTags>H2020, IPM Decisions, Email Provider</PackageTags>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="EmailTemplates\ForgotPasswordEmailTemplate.cshtml" />
+    <None Remove="EmailTemplates\RegistrationEmailTemplate.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="EmailTemplates\ForgotPasswordEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmailTemplates\RegistrationEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="RazorLight" Version="2.0.0-beta7" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="EmailTemplates\EmailTemplates.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+</Project>
