@@ -79,8 +79,9 @@ This request send an email with a link to the reset password page.
 
 ## ForgotPasswordEmailDto (object)
 ### Properties
-+ `toAddress` (string) 
-+ `forgotPasswordUrl` (string)
++ `toAddress` (string, required) 
++ `callbackUrl` (string, required)
++ `token` (string)
 
 ## LinkDto (object)
 ### Properties
@@ -93,5 +94,6 @@ This request send an email with a link to the reset password page.
 
 ## RegistrationEmailDto (object)
 ### Properties
-+ `toAddress` (string) 
-+ `confirmEmailUrl` (string)
++ `toAddress` (string, required) 
++ `callbackUrl` (string, required)
++ `token` (string)
