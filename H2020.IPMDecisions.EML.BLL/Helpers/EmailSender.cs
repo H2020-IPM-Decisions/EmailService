@@ -19,27 +19,25 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
         {
             try
             {
-                var mimeMessage = new MimeMessage();
-                mimeMessage.From.Add(new MailboxAddress(emailSettings.FromName, emailSettings.FromAddress));
-
-                mimeMessage.To.Add(new MailboxAddress(toAddress));
-                mimeMessage.Subject = subject;
-                var bodyBuilder = new BodyBuilder
+                var message = new MimeMessage
                 {
-                    HtmlBody = body
+                    Subject = subject,
+                    Body = new BodyBuilder { HtmlBody = body }.ToMessageBody()
                 };
 
-                mimeMessage.Body = bodyBuilder.ToMessageBody();
+                message.From.Add(InternetAddress.Parse(emailSettings.FromAddress));
+                message.To.Add(InternetAddress.Parse(toAddress));
 
                 using (var client = new MailKit.Net.Smtp.SmtpClient())
                 {
-                    client.Connect(emailSettings.SmtpServer, emailSettings.SmtpPort, emailSettings.EnableSsl);
+                    await client.ConnectAsync(emailSettings.SmtpServer, emailSettings.SmtpPort, emailSettings.EnableSsl);
+
                     if (emailSettings.UseSmtpLoginCredentials)
-                        client.Authenticate(emailSettings.SmtpUsername, emailSettings.SmtpPassword);
-                        
-                    await client.SendAsync(mimeMessage);
-                    client.Disconnect(true);
-                }
+                        await client.AuthenticateAsync(emailSettings.SmtpUsername, emailSettings.SmtpPassword);
+
+                    await client.SendAsync(message);
+                    await client.DisconnectAsync(true);
+                };
             }
             catch (System.Exception ex)
             {
