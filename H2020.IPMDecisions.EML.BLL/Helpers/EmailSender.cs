@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using H2020.IPMDecisions.EML.Core.Providers;
+using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using MimeKit;
 
@@ -25,10 +26,10 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
                     Body = new BodyBuilder { HtmlBody = body }.ToMessageBody()
                 };
 
-                message.From.Add(InternetAddress.Parse(emailSettings.FromAddress));
+                message.From.Add(new MailboxAddress(emailSettings.FromName, emailSettings.FromAddress));
                 message.To.Add(InternetAddress.Parse(toAddress));
 
-                using (var client = new MailKit.Net.Smtp.SmtpClient())
+                using (var client = new SmtpClient())
                 {
                     await client.ConnectAsync(emailSettings.SmtpServer, emailSettings.SmtpPort, emailSettings.EnableSsl);
 
