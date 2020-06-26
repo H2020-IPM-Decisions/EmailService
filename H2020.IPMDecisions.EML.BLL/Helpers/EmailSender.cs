@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using H2020.IPMDecisions.EML.Core.Models;
-using H2020.IPMDecisions.EML.Core.Providers;
+using H2020.IPMDecisions.EML.BLL.Providers;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using MimeKit;
