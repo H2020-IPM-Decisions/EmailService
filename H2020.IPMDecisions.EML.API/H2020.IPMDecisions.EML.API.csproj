@@ -17,14 +17,15 @@
     <PreserveCompilationContext>true</PreserveCompilationContext>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.3" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="5.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.3"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.3"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.3"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1"/>
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="5.4.1"/>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0"/>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\H2020.IPMDecisions.EML.Core\H2020.IPMDecisions.EML.Core.csproj" />
-    <ProjectReference Include="..\H2020.IPMDecisions.EML.BLL\H2020.IPMDecisions.EML.BLL.csproj" />
+    <ProjectReference Include="..\H2020.IPMDecisions.EML.Core\H2020.IPMDecisions.EML.Core.csproj"/>
+    <ProjectReference Include="..\H2020.IPMDecisions.EML.BLL\H2020.IPMDecisions.EML.BLL.csproj"/>
   </ItemGroup>
 </Project>
