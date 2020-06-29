@@ -12,7 +12,9 @@ namespace H2020.IPMDecisions.EML.Core.Profiles
                 .ForMember(dest => dest.First_Name,
                     opt => opt.MapFrom(src => src.FirstName))
                 .ForMember(dest => dest.Last_Name,
-                    opt => opt.MapFrom(src => src.LastName));
+                    opt => opt.MapFrom(src => src.LastName))
+                .ForMember(dest => dest.Id,
+                    opt => opt.Ignore());
         }
     }
 }
