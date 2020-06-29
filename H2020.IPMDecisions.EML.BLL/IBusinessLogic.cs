@@ -12,7 +12,7 @@ namespace H2020.IPMDecisions.EML.BLL
         #endregion
 
         #region Emailing List
-        Task<GenericResponse> AddNewContactToMailingList(EmailingListContactDto contactDto);
+        Task<GenericResponse> UpsertContactToMailingList(EmailingListContactDto contactDto);
 
         #endregion
     }

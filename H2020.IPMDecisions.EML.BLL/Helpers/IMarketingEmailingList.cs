@@ -6,6 +6,6 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
 {
     public interface IMarketingEmailingList
     {
-        Task<HttpStatusCode> AddNewContactAsync(EmailingListContactDto contactDto);
+        Task<HttpStatusCode> UpsertContactAsync(EmailingListContactDto contactDto);
     }
 }

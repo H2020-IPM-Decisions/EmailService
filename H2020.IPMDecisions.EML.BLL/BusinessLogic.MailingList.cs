@@ -1,22 +1,20 @@
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using H2020.IPMDecisions.EML.BLL.Helpers;
 using H2020.IPMDecisions.EML.Core.Dtos;
 using H2020.IPMDecisions.EML.Core.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace H2020.IPMDecisions.EML.BLL
 {
     public partial class BusinessLogic : IBusinessLogic
     {
-        public async Task<GenericResponse> AddNewContactToMailingList(EmailingListContactDto contactDto)
+        public async Task<GenericResponse> UpsertContactToMailingList(EmailingListContactDto contactDto)
         {
             try
             {
-                var responseCode = await marketingEmailingList.AddNewContactAsync(contactDto);
+                var responseCode = await marketingEmailingList.UpsertContactAsync(contactDto);
 
-                if (responseCode != HttpStatusCode.OK)
+                if (responseCode != HttpStatusCode.Accepted)
                     return GenericResponseBuilder.NoSuccess("Something went wrong. Try again later");
 
                 return GenericResponseBuilder.Success();

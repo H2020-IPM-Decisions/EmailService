@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using SendGrid;
-using SendGrid.Helpers.Mail;
 
 namespace H2020.IPMDecisions.EML.BLL.Helpers
 {
@@ -33,7 +32,7 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
                 ?? throw new ArgumentNullException(nameof(configuration));
         }
 
-        public async Task<HttpStatusCode> AddNewContactAsync(EmailingListContactDto contactDto)
+        public async Task<HttpStatusCode> UpsertContactAsync(EmailingListContactDto contactDto)
         {
             try
             {
