@@ -1,4 +1,5 @@
 using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using H2020.IPMDecisions.EML.API.Filters;
 using H2020.IPMDecisions.EML.BLL;
@@ -24,6 +25,7 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Consumes(MediaTypeNames.Application.Json)]
         [HttpPut("contact", Name = "UpsertContact")]
         // PUT: api/mailinglist/contact
         public async Task<IActionResult> Put([FromBody] EmailingListContactDto contactDto)
@@ -39,6 +41,7 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Produces(MediaTypeNames.Application.Json)]
         [HttpGet("contact/{email}", Name = "GetContact")]
         // GET: api/mailinglist/contact/{email}
         public async Task<IActionResult> Get([FromRoute] string email)

@@ -9,6 +9,8 @@ namespace H2020.IPMDecisions.EML.Core.Profiles
         {
             // Dtos to Models
             CreateMap<EmailingListContactDto, SendGridEmailingListContact>()
+                .ForMember(dest => dest.Email,
+                        opt => opt.MapFrom(src => src.Email.ToLower()))
                 .ForMember(dest => dest.First_Name,
                     opt => opt.MapFrom(src => src.FirstName))
                 .ForMember(dest => dest.Last_Name,
