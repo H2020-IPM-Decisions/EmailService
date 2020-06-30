@@ -12,6 +12,8 @@ namespace H2020.IPMDecisions.EML.BLL
         #endregion
 
         #region Emailing List
+        Task<GenericResponse> DeleteContactFromMailingList(string contactEmail);
+        Task<GenericResponse> GetContactFromMailingList(string contactEmail);
         Task<GenericResponse> UpsertContactToMailingList(EmailingListContactDto contactDto);
 
         #endregion
