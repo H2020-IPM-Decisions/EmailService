@@ -39,7 +39,7 @@ This request allows you to check if the API is working and returns some valid re
 
 ## Accounts [/api/accounts]
 
-### RegistrationEmail [POST /api/accounts/registrationemail]
+### Registration Email [POST /api/accounts/registrationemail]
 
 This request send an email with a link to the registration page.
 
@@ -57,7 +57,7 @@ This request send an email with a link to the registration page.
 
         message
         
-### RegistrationEmail [POST /api/accounts/forgotpassword]
+### Forgot Password Email [POST /api/accounts/forgotpassword]
 
 This request send an email with a link to the reset password page.
 
@@ -74,13 +74,93 @@ This request send an email with a link to the reset password page.
 + Response 400
 
         message
+
+# Group Mailing List
+
+## Contacts [/api/mailinglist/contacts]
+
+### Add or Update Contact [PUT]
+
+Use this endpoint to update and add contacts (also know as [upsert](https://en.wiktionary.org/wiki/upsert)).
+If the contact already exists in the system, any entries you submit via this endpoint will update the existing contact in the system.
+
++ Request (application/json)
+
+    + Headers
     
+            ipm-eml-auth: 1234
+    
+    + Attributes(EmailingListContactDto)
+            
++ Response 200
+
++ Response 400
+
+        message
+
+### Get Contact [GET /api/mailinglist/contacts/{email}]
+
+Use this endpoint to search by email and return the ContactID.
+
++ Request
+
+    + Headers
+    
+            ipm-eml-auth: 1234
+    
++ Parameters
+
+    + email (string, required)
+            
++ Response 200
+
+        Success
+    
+    + Attributes 
+
+        + id (string)
+
++ Response 400
+
+        message
+
++ Response 404
+
+        Not Found
+
+### Delete Contact [DELETE /api/mailinglist/contacts/{email}]
+
+Use this endpoint deletes a contact from the mailing list.
+
++ Request
+
+    + Headers
+    
+            ipm-eml-auth: 1234
+    
++ Parameters
+
+    + email (string, required)
+            
++ Response 204
+
++ Response 400
+
+        message
+
 # Data Structures
+
+#EmailingListContactDto
+### Properties
++ `email` (string, required) 
++ `firstName` (string)
++ `lastName` (string)
 
 ## ForgotPasswordEmailDto (object)
 ### Properties
-+ `toAddress` (string) 
-+ `forgotPasswordUrl` (string)
++ `toAddress` (string, required) 
++ `callbackUrl` (string, required)
++ `token` (string)
 
 ## LinkDto (object)
 ### Properties
@@ -93,5 +173,6 @@ This request send an email with a link to the reset password page.
 
 ## RegistrationEmailDto (object)
 ### Properties
-+ `toAddress` (string) 
-+ `confirmEmailUrl` (string)
++ `toAddress` (string, required) 
++ `callbackUrl` (string, required)
++ `token` (string)

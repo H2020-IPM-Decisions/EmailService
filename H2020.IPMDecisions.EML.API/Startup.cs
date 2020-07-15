@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using H2020.IPMDecisions.EML.BLL.Helpers;
 using H2020.IPMDecisions.EML.BLL;
+using AutoMapper;
+using H2020.IPMDecisions.EML.Core.Profiles;
 
 namespace H2020.IPMDecisions.EML.API
 {
@@ -34,7 +36,10 @@ namespace H2020.IPMDecisions.EML.API
             services.ConfigureJwtAuthentication(Configuration);
             services.ConfigureEmailSettings(Configuration);
 
+            services.AddAutoMapper(typeof(MainProfile));
+
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IMarketingEmailingList, SendGridMarketingEmailingList>();
             services.AddScoped<IBusinessLogic, BusinessLogic>();
 
             services.ConfigureSwagger();

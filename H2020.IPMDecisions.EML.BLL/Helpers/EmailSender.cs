@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
-using H2020.IPMDecisions.EML.Core.Providers;
+using H2020.IPMDecisions.EML.Core.Models;
+using H2020.IPMDecisions.EML.BLL.Providers;
+using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using MimeKit;
 
@@ -15,37 +17,61 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
                 ?? throw new System.ArgumentNullException(nameof(emailSettings));
         }
 
-        public async Task SendSingleEmailAsync(string toAddress, string subject, string body)
+        public async Task SendSingleEmailAsync(string toAddress, string subject, string body, EmailPriority priority = EmailPriority.Normal)
         {
             try
             {
-                var mimeMessage = new MimeMessage();
-                mimeMessage.From.Add(new MailboxAddress(emailSettings.FromName, emailSettings.FromAddress));
-
-                mimeMessage.To.Add(new MailboxAddress(toAddress));
-                mimeMessage.Subject = subject;
-                var bodyBuilder = new BodyBuilder
+                var message = new MimeMessage
                 {
-                    HtmlBody = body
+                    Subject = subject,
+                    Body = new BodyBuilder { HtmlBody = body }.ToMessageBody()
                 };
 
-                mimeMessage.Body = bodyBuilder.ToMessageBody();
+                message.From.Add(new MailboxAddress(emailSettings.FromName, emailSettings.FromAddress));
+                message.To.Add(InternetAddress.Parse(toAddress));
 
-                using (var client = new MailKit.Net.Smtp.SmtpClient())
+                SetEmailPriority(priority, message);
+
+                using (var client = new SmtpClient())
                 {
-                    client.Connect(emailSettings.SmtpServer, emailSettings.SmtpPort, emailSettings.EnableSsl);
+                    await client.ConnectAsync(emailSettings.SmtpServer, emailSettings.SmtpPort, emailSettings.EnableSsl);
+
                     if (emailSettings.UseSmtpLoginCredentials)
-                        client.Authenticate(emailSettings.SmtpUsername, emailSettings.SmtpPassword);
-                        
-                    await client.SendAsync(mimeMessage);
-                    client.Disconnect(true);
-                }
+                        await client.AuthenticateAsync(emailSettings.SmtpUsername, emailSettings.SmtpPassword);
+
+                    await client.SendAsync(message);
+                    await client.DisconnectAsync(true);
+                };
             }
             catch (System.Exception ex)
             {
                 // ToDo Log error       
                 throw ex;
             }            
+        }
+
+        private static void SetEmailPriority(EmailPriority priority, MimeMessage message)
+        {
+            switch (priority)
+            {
+                case EmailPriority.High:
+                    message.Priority = MessagePriority.Urgent;
+                    message.Importance = MessageImportance.High;
+                    message.XPriority = XMessagePriority.High;
+                    break;
+
+                case EmailPriority.Normal:
+                    message.Priority = MessagePriority.Normal;
+                    message.Importance = MessageImportance.Normal;
+                    message.XPriority = XMessagePriority.Normal;
+                    break;
+
+                case EmailPriority.Low:
+                    message.Priority = MessagePriority.NonUrgent;
+                    message.Importance = MessageImportance.Low;
+                    message.XPriority = XMessagePriority.Low;
+                    break;
+            }
         }
     }
 }

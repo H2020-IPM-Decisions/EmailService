@@ -7,63 +7,23 @@ using Microsoft.Extensions.Configuration;
 
 namespace H2020.IPMDecisions.EML.BLL
 {
-    public class BusinessLogic : IBusinessLogic
+    public partial class BusinessLogic : IBusinessLogic
     {
         private readonly IEmailSender emailSender;
         private readonly IConfiguration configuration;
+        private readonly IMarketingEmailingList marketingEmailingList;
 
         public BusinessLogic(
             IEmailSender emailSender,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IMarketingEmailingList marketingEmailingList)
         {
             this.configuration = configuration
                 ?? throw new ArgumentNullException(nameof(configuration));
             this.emailSender = emailSender
                 ?? throw new System.ArgumentNullException(nameof(emailSender));
-        }
-
-        public async Task<GenericResponse> SendForgotPasswordEmail(ForgotPasswordEmailDto forgotPasswordEmail)
-        {
-            try
-            {
-                var toAddress = forgotPasswordEmail.ToAddress;
-                var subject = configuration["EmailTemplates:ForgotPassword:Subject"];
-
-                var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
-                    "EmailTemplates.ForgotPasswordEmailTemplate",
-                    forgotPasswordEmail);
-
-                await emailSender.SendSingleEmailAsync(toAddress, subject, body);
-                
-                return GenericResponseBuilder.Success();
-            }
-            catch (Exception ex)
-            {
-                // ToDo log Error         
-                return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
-            }
-        }
-
-        public async Task<GenericResponse> SendRegistrationEmail(RegistrationEmailDto registrationEmail)
-        {
-            try
-            {
-                var toAddress = registrationEmail.ToAddress;
-                var subject = configuration["EmailTemplates:Registration:Subject"];
-
-                var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
-                    "EmailTemplates.RegistrationEmailTemplate",
-                    registrationEmail);
-
-                await emailSender.SendSingleEmailAsync(toAddress, subject, body);
-
-                return GenericResponseBuilder.Success();
-            }
-            catch (Exception ex)
-            {
-                // ToDo log Error         
-                return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
-            }
+            this.marketingEmailingList = marketingEmailingList
+                ?? throw new ArgumentNullException(nameof(marketingEmailingList));
         }
     }
 }

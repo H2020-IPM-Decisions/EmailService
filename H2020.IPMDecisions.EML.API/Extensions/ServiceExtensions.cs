@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using H2020.IPMDecisions.EML.Core.Providers;
+using H2020.IPMDecisions.EML.BLL.Providers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -154,6 +154,7 @@ namespace H2020.IPMDecisions.EML.Extensions
                 options.FromAddress = config["EmailSettings:FromAddress"];
                 options.FromName = config["EmailSettings:FromName"];
                 options.EnableSsl = bool.Parse(config["EmailSettings:EnableSsl"]);
+                options.UseSmtpLoginCredentials = bool.Parse(config["EmailSettings:UseSmtpLoginCredentials"]);
             });
         }
 

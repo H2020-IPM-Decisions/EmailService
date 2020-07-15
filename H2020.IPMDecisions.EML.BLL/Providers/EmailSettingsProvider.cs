@@ -1,4 +1,4 @@
-namespace H2020.IPMDecisions.EML.Core.Providers
+namespace H2020.IPMDecisions.EML.BLL.Providers
 {
     public class EmailSettingsProvider
     {
