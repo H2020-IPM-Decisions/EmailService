@@ -48,5 +48,19 @@ namespace H2020.IPMDecisions.EML.API.Controllers
 
             return BadRequest(new { message = response.ErrorMessage });
         }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost("ReConfirmEmail", Name = "ReConfirmEmail")]
+        // POST: api/accounts/reconfirmemail
+        public async Task<IActionResult> ReConfirmEmail([FromBody] RegistrationEmailDto registrationEmail)
+        {
+            var response = await businessLogic.ResendConfirmationEmail(registrationEmail);
+
+            if (response.IsSuccessful)
+                return Ok();
+
+            return BadRequest(new { message = response.ErrorMessage });
+        }
     }
 }

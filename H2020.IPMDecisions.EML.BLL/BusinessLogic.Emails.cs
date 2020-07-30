@@ -51,5 +51,27 @@ namespace H2020.IPMDecisions.EML.BLL
                 return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
             }
         }
+
+        public async Task<GenericResponse> ResendConfirmationEmail(RegistrationEmailDto registrationEmail)
+        {
+            try
+            {
+                var toAddress = registrationEmail.ToAddress;
+                var subject = configuration["EmailTemplates:ReConfirmEmail:Subject"];
+
+                var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
+                    "EmailTemplates.ReConfirmEmailEmailTemplate",
+                    registrationEmail);
+
+                await emailSender.SendSingleEmailAsync(toAddress, subject, body);
+
+                return GenericResponseBuilder.Success();
+            }
+            catch (Exception ex)
+            {
+                // ToDo log Error         
+                return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
+            }
+        }
     }
 }
