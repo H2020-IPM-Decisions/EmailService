@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace H2020.IPMDecisions.EML.API.Controllers
 {
     [ApiController]
-    [Route("api/accounts")]
+    [Route("api/internalcall")]
     [Consumes("application/vnd.h2020ipmdecisions.internal+json")]
     [TypeFilter(typeof(RequestHasTokenResourceFilter))]
-    public class AccountsController : ControllerBase
+    public class InternalCallsController : ControllerBase
     {
         private readonly IBusinessLogic businessLogic;
-        public AccountsController(IBusinessLogic businessLogic)
+        public InternalCallsController(IBusinessLogic businessLogic)
         {
             this.businessLogic = businessLogic
                 ?? throw new ArgumentNullException(nameof(businessLogic));
@@ -24,7 +24,7 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost("RegistrationEmail", Name = "RegistrationEmail")]
-        // POST: api/accounts/registrationemail
+        // POST: api/internalcall/registrationemail
         public async Task<IActionResult> RegistrationEmail([FromBody] RegistrationEmailDto registrationEmail)
         {
             var response = await businessLogic.SendRegistrationEmail(registrationEmail);
@@ -38,7 +38,7 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost("ForgotPassword", Name = "ForgotPassword")]
-        // POST: api/accounts/forgotpassword
+        // POST: api/internalcall/forgotpassword
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordEmailDto forgotPasswordEmail)
         {
             var response = await businessLogic.SendForgotPasswordEmail(forgotPasswordEmail);
@@ -52,10 +52,24 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost("ReConfirmEmail", Name = "ReConfirmEmail")]
-        // POST: api/accounts/reconfirmemail
+        // POST: api/internalcall/reconfirmemail
         public async Task<IActionResult> ReConfirmEmail([FromBody] RegistrationEmailDto registrationEmail)
         {
             var response = await businessLogic.ResendConfirmationEmail(registrationEmail);
+
+            if (response.IsSuccessful)
+                return Ok();
+
+            return BadRequest(new { message = response.ErrorMessage });
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost("SendDataRequest", Name = "SendDataRequest")]
+        // POST: api/internalcall/SendDataRequest
+        public async Task<IActionResult> SendDataRequest([FromBody] DataShareDto dataRequestDto)
+        {
+            var response = await businessLogic.SendDataRequestEmail(dataRequestDto);
 
             if (response.IsSuccessful)
                 return Ok();

@@ -63,7 +63,7 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
             try
             {                
                 var ipmDecisionsListId = configuration["MailingListSettings:IPMDecisionsListId"].ToString();
-                var queryString = string.Format("email LIKE '{0}' AND CONTAINS(list_ids, '{1}')", email, ipmDecisionsListId);
+                var queryString = string.Format("email LIKE '{0}' AND CONTAINS(list_ids, '{1}')", email.ToLower(), ipmDecisionsListId);
                 var jsonObject = new JObject();
                 jsonObject.Add("query", queryString);
 

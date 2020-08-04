@@ -7,6 +7,7 @@ namespace H2020.IPMDecisions.EML.BLL
     public interface IBusinessLogic
     {
         #region Transactional Emails
+        Task<GenericResponse> SendDataRequestEmail(DataShareDto dataRequestDto);
         Task<GenericResponse> SendForgotPasswordEmail(ForgotPasswordEmailDto forgotPasswordEmail);
         Task<GenericResponse> SendRegistrationEmail(RegistrationEmailDto registrationEmail);
         Task<GenericResponse> ResendConfirmationEmail(RegistrationEmailDto registrationEmail);
