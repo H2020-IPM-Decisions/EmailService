@@ -8,7 +8,6 @@ namespace H2020.IPMDecisions.EML.Core.Dtos
         [DataType(DataType.EmailAddress)]
         public string ToAddress { get; set; }
         [Required]
-        [DataType(DataType.EmailAddress)]
-        public string DataRequesterEmail { get; set; }
+        public string DataRequesterName { get; set; }
     }
 }
