@@ -18,6 +18,7 @@
     <None Remove="EmailTemplates\ForgotPasswordEmailTemplate.cshtml"/>
     <None Remove="EmailTemplates\RegistrationEmailTemplate.cshtml"/>
     <None Remove="EmailTemplates\ReConfirmEmailEmailTemplate.cshtml"/>
+    <None Remove="EmailTemplates\DataShareEmailTemplate.cshtml"/>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EmailTemplates\ForgotPasswordEmailTemplate.cshtml">
@@ -27,6 +28,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="EmailTemplates\ReConfirmEmailEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+     <EmbeddedResource Include="EmailTemplates\DataShareEmailTemplate.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
