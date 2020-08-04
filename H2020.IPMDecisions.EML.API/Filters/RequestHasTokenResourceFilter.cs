@@ -21,7 +21,7 @@ namespace H2020.IPMDecisions.EML.API.Filters
 
         public void OnResourceExecuting(ResourceExecutingContext context)
         {
-            string tokenHeader = context.HttpContext.Request.Headers[configuration["IPMEmailMicroservice:SecurityTokenCustomHeader"]];
+            string tokenHeader = context.HttpContext.Request.Headers[configuration["MicroserviceInternalCommunication:SecurityTokenCustomHeader"]];
 
             if (string.IsNullOrEmpty(tokenHeader))
             {
@@ -29,7 +29,7 @@ namespace H2020.IPMDecisions.EML.API.Filters
                 return;           
             }
 
-            if (tokenHeader.Trim() != configuration["IPMEmailMicroservice:SecurityToken"])
+            if (tokenHeader.Trim() != configuration["MicroserviceInternalCommunication:SecurityToken"])
             {
                 context.Result = new UnauthorizedResult();
                 return;

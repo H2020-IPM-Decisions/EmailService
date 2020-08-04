@@ -10,7 +10,7 @@ namespace H2020.IPMDecisions.EML.API.Controllers
 {
     [ApiController]
     [Route("api/accounts")]
-    [Consumes("application/vnd.h2020ipmdecisions.email+json")]
+    [Consumes("application/vnd.h2020ipmdecisions.internal+json")]
     [TypeFilter(typeof(RequestHasTokenResourceFilter))]
     public class AccountsController : ControllerBase
     {
