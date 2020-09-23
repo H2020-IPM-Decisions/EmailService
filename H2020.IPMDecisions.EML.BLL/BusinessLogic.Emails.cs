@@ -19,8 +19,7 @@ namespace H2020.IPMDecisions.EML.BLL
                     "EmailTemplates.ForgotPasswordEmailTemplate",
                     forgotPasswordEmail);
 
-                await emailSender.SendSingleEmailAsync(toAddress, subject, body);
-                
+                await emailSender.SendSingleEmailAsync(toAddress, subject, body);     
                 return GenericResponseBuilder.Success();
             }
             catch (Exception ex)
@@ -42,7 +41,48 @@ namespace H2020.IPMDecisions.EML.BLL
                     registrationEmail);
 
                 await emailSender.SendSingleEmailAsync(toAddress, subject, body);
+                return GenericResponseBuilder.Success();
+            }
+            catch (Exception ex)
+            {
+                // ToDo log Error         
+                return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
+            }
+        }
 
+        public async Task<GenericResponse> ResendConfirmationEmail(RegistrationEmailDto registrationEmail)
+        {
+            try
+            {
+                var toAddress = registrationEmail.ToAddress;
+                var subject = configuration["EmailTemplates:ReConfirmEmail:Subject"];
+
+                var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
+                    "EmailTemplates.ReConfirmEmailEmailTemplate",
+                    registrationEmail);
+
+                await emailSender.SendSingleEmailAsync(toAddress, subject, body);
+                return GenericResponseBuilder.Success();
+            }
+            catch (Exception ex)
+            {
+                // ToDo log Error         
+                return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
+            }
+        }
+
+        public async Task<GenericResponse> SendDataRequestEmail(DataShareDto dataRequestDto)
+        {
+            try
+            {
+                var toAddress = dataRequestDto.ToAddress;
+                var subject = configuration["EmailTemplates:DataRequest:Subject"];
+
+                var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
+                    "EmailTemplates.DataShareEmailTemplate",
+                    dataRequestDto);
+
+                await emailSender.SendSingleEmailAsync(toAddress, subject, body);
                 return GenericResponseBuilder.Success();
             }
             catch (Exception ex)

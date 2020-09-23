@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>0.1.1.0</Version>
-    <AssemblyVersion>0.1.1.0</AssemblyVersion>
-    <FileVersion>0.1.1.0</FileVersion>
+    <Version>0.1.1.1</Version>
+    <AssemblyVersion>0.1.1.1</AssemblyVersion>
+    <FileVersion>0.1.1.1</FileVersion>
     <Authors>ADAS Modelling and Informatics Team</Authors>
     <Company>RSK ADAS Ltd</Company>
     <Product>H2020 IPM Decisions Email Service</Product>
@@ -17,12 +17,20 @@
   <ItemGroup>
     <None Remove="EmailTemplates\ForgotPasswordEmailTemplate.cshtml"/>
     <None Remove="EmailTemplates\RegistrationEmailTemplate.cshtml"/>
+    <None Remove="EmailTemplates\ReConfirmEmailEmailTemplate.cshtml"/>
+    <None Remove="EmailTemplates\DataShareEmailTemplate.cshtml"/>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EmailTemplates\ForgotPasswordEmailTemplate.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="EmailTemplates\RegistrationEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmailTemplates\ReConfirmEmailEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+     <EmbeddedResource Include="EmailTemplates\DataShareEmailTemplate.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
