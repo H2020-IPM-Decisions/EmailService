@@ -74,6 +74,17 @@ namespace H2020.IPMDecisions.EML.API
             app.UseAuthentication();
             app.UseAuthorization();
 
+            var swaggerBasePath = Configuration["MicroserviceInternalCommunication:EmailMicroservice"];
+            app.UseSwagger(c =>
+            {
+                c.RouteTemplate = swaggerBasePath+ "swagger/{documentName}/swagger.json";
+            });            
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint($"/{swaggerBasePath}swagger/v1/swagger.json", "H2020 IPM Decisions - Email Service API");
+                c.RoutePrefix = $"{swaggerBasePath}swagger";
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
