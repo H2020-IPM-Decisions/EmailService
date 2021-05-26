@@ -19,7 +19,7 @@ namespace H2020.IPMDecisions.EML.BLL
                     "EmailTemplates.ForgotPasswordEmailTemplate",
                     forgotPasswordEmail);
 
-                await emailSender.SendSingleEmailAsync(toAddress, subject, body);     
+                await emailSender.SendSingleEmailAsync(toAddress, subject, body);
                 return GenericResponseBuilder.Success();
             }
             catch (Exception ex)
@@ -81,6 +81,27 @@ namespace H2020.IPMDecisions.EML.BLL
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
                     "EmailTemplates.DataShareEmailTemplate",
                     dataRequestDto);
+
+                await emailSender.SendSingleEmailAsync(toAddress, subject, body);
+                return GenericResponseBuilder.Success();
+            }
+            catch (Exception ex)
+            {
+                // ToDo log Error         
+                return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
+            }
+        }
+
+        public async Task<GenericResponse> SendInactiveUserEmail(InactiveUserDto inactiveUserDto)
+        {
+            try
+            {
+                var toAddress = inactiveUserDto.ToAddress;
+                var subject = configuration["EmailTemplates:InactiveUser:Subject"];
+
+                var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
+                    "EmailTemplates.InactiveUserEmailTemplate",
+                    inactiveUserDto); ;
 
                 await emailSender.SendSingleEmailAsync(toAddress, subject, body);
                 return GenericResponseBuilder.Success();

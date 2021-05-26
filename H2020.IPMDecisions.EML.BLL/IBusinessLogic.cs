@@ -11,13 +11,13 @@ namespace H2020.IPMDecisions.EML.BLL
         Task<GenericResponse> SendForgotPasswordEmail(ForgotPasswordEmailDto forgotPasswordEmail);
         Task<GenericResponse> SendRegistrationEmail(RegistrationEmailDto registrationEmail);
         Task<GenericResponse> ResendConfirmationEmail(RegistrationEmailDto registrationEmail);
+        Task<GenericResponse> SendInactiveUserEmail(InactiveUserDto inactiveUserDto);
         #endregion
 
         #region Emailing List
         Task<GenericResponse> DeleteContactFromMailingList(string contactEmail);
         Task<GenericResponse> GetContactFromMailingList(string contactEmail);
         Task<GenericResponse> UpsertContactToMailingList(EmailingListContactDto contactDto);
-
         #endregion
     }
 }
