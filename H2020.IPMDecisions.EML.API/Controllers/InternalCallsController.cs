@@ -19,8 +19,8 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         {
             this.businessLogic = businessLogic
                 ?? throw new ArgumentNullException(nameof(businessLogic));
-        }    
-        
+        }
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost("RegistrationEmail", Name = "RegistrationEmail")]
@@ -70,6 +70,20 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         public async Task<IActionResult> SendDataRequest([FromBody] DataShareDto dataRequestDto)
         {
             var response = await businessLogic.SendDataRequestEmail(dataRequestDto);
+
+            if (response.IsSuccessful)
+                return Ok();
+
+            return BadRequest(new { message = response.ErrorMessage });
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost("SendInactiveUser", Name = "SendInactiveUser")]
+        // POST: api/internalcall/SendInactiveUser
+        public async Task<IActionResult> SendInactiveUser([FromBody] InactiveUserDto inactiveUserDto)
+        {
+            var response = await businessLogic.SendInactiveUserEmail(inactiveUserDto);
 
             if (response.IsSuccessful)
                 return Ok();
