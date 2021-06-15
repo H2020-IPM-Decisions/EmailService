@@ -19,15 +19,12 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
     {
         private readonly IMapper mapper;
         private readonly IConfiguration configuration;
-        private readonly EmailSettingsProvider emailSettings;
 
         public SendGridMarketingEmailingList(
             IMapper mapper,
             IOptions<EmailSettingsProvider> emailSettings,
             IConfiguration configuration)
         {
-            this.emailSettings = emailSettings.Value
-                ?? throw new System.ArgumentNullException(nameof(emailSettings));
             this.mapper = mapper
                 ?? throw new System.ArgumentNullException(nameof(mapper));
             this.configuration = configuration
@@ -38,7 +35,8 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
         {
             try
             {
-                var client = new SendGridClient(emailSettings.SmtpPassword);
+                var sendGridToken = configuration["MailingListSettings:LoginToken"].ToString();
+                var client = new SendGridClient(sendGridToken);
 
                 var response = await client.RequestAsync(
                     method: SendGridClient.Method.DELETE,
@@ -61,13 +59,14 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
         public async Task<string> SearchContactAsync(string email)
         {
             try
-            {                
+            {
                 var ipmDecisionsListId = configuration["MailingListSettings:IPMDecisionsListId"].ToString();
                 var queryString = string.Format("email LIKE '{0}' AND CONTAINS(list_ids, '{1}')", email.ToLower(), ipmDecisionsListId);
                 var jsonObject = new JObject();
                 jsonObject.Add("query", queryString);
 
-                var client = new SendGridClient(emailSettings.SmtpPassword);
+                var sendGridToken = configuration["MailingListSettings:LoginToken"].ToString();
+                var client = new SendGridClient(sendGridToken);
                 var response = await client.RequestAsync(
                     method: SendGridClient.Method.POST,
                     urlPath: "marketing/contacts/search",
@@ -98,7 +97,8 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
             {
                 var sendGridContact = this.mapper.Map<SendGridEmailingListContact>(contactDto);
 
-                var client = new SendGridClient(emailSettings.SmtpPassword);
+                var sendGridToken = configuration["MailingListSettings:LoginToken"].ToString();
+                var client = new SendGridClient(sendGridToken);
                 var sendGridObject = new SendGridEmailingListObject();
                 sendGridObject.List_Ids.Add(configuration["MailingListSettings:IPMDecisionsListId"].ToString());
                 sendGridObject.Contacts.Add(sendGridContact);

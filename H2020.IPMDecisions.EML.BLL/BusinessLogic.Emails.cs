@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using H2020.IPMDecisions.EML.BLL.Helpers;
 using H2020.IPMDecisions.EML.Core.Dtos;
+using H2020.IPMDecisions.EML.Core.EmailTemplates;
 using H2020.IPMDecisions.EML.Core.Models;
 
 namespace H2020.IPMDecisions.EML.BLL
@@ -16,7 +17,7 @@ namespace H2020.IPMDecisions.EML.BLL
                 var subject = configuration["EmailTemplates:ForgotPassword:Subject"];
 
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
-                    "EmailTemplates.ForgotPasswordEmailTemplate",
+                    EmailTemplates.ForgotPasswordEmailTemplatePath,
                     forgotPasswordEmail);
 
                 await emailSender.SendSingleEmailAsync(toAddress, subject, body);
@@ -37,7 +38,7 @@ namespace H2020.IPMDecisions.EML.BLL
                 var subject = configuration["EmailTemplates:Registration:Subject"];
 
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
-                    "EmailTemplates.RegistrationEmailTemplate",
+                    EmailTemplates.RegistrationEmailTemplatePath,
                     registrationEmail);
 
                 await emailSender.SendSingleEmailAsync(toAddress, subject, body);
@@ -58,7 +59,7 @@ namespace H2020.IPMDecisions.EML.BLL
                 var subject = configuration["EmailTemplates:ReConfirmEmail:Subject"];
 
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
-                    "EmailTemplates.ReConfirmEmailEmailTemplate",
+                    EmailTemplates.ReConfirmEmailEmailTemplatePath,
                     registrationEmail);
 
                 await emailSender.SendSingleEmailAsync(toAddress, subject, body);
@@ -79,7 +80,7 @@ namespace H2020.IPMDecisions.EML.BLL
                 var subject = configuration["EmailTemplates:DataRequest:Subject"];
 
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
-                    "EmailTemplates.DataShareEmailTemplate",
+                    EmailTemplates.DataShareEmailTemplatePath,
                     dataRequestDto);
 
                 await emailSender.SendSingleEmailAsync(toAddress, subject, body);
@@ -100,7 +101,7 @@ namespace H2020.IPMDecisions.EML.BLL
                 var subject = configuration["EmailTemplates:InactiveUser:Subject"];
 
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
-                    "EmailTemplates.InactiveUserEmailTemplate",
+                    EmailTemplates.InactiveUserEmailTemplatePath,
                     inactiveUserDto); ;
 
                 await emailSender.SendSingleEmailAsync(toAddress, subject, body);
