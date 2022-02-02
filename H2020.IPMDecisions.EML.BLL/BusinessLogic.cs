@@ -12,11 +12,12 @@ namespace H2020.IPMDecisions.EML.BLL
         private readonly IEmailSender emailSender;
         private readonly IConfiguration configuration;
         private readonly IMarketingEmailingList marketingEmailingList;
+        private readonly IJsonStringLocalizer jsonStringLocalizer;
 
         public BusinessLogic(
             IEmailSender emailSender,
             IConfiguration configuration,
-            IMarketingEmailingList marketingEmailingList)
+            IMarketingEmailingList marketingEmailingList, IJsonStringLocalizer jsonStringLocalizer)
         {
             this.configuration = configuration
                 ?? throw new ArgumentNullException(nameof(configuration));
@@ -24,6 +25,8 @@ namespace H2020.IPMDecisions.EML.BLL
                 ?? throw new System.ArgumentNullException(nameof(emailSender));
             this.marketingEmailingList = marketingEmailingList
                 ?? throw new ArgumentNullException(nameof(marketingEmailingList));
+            this.jsonStringLocalizer = jsonStringLocalizer
+                ?? throw new ArgumentNullException(nameof(jsonStringLocalizer));
         }
     }
 }

@@ -9,6 +9,7 @@ using H2020.IPMDecisions.EML.BLL.Helpers;
 using H2020.IPMDecisions.EML.BLL;
 using AutoMapper;
 using H2020.IPMDecisions.EML.Core.Profiles;
+using H2020.IPMDecisions.EML.BLL.Providers;
 
 namespace H2020.IPMDecisions.EML.API
 {
@@ -40,6 +41,9 @@ namespace H2020.IPMDecisions.EML.API
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IMarketingEmailingList, SendGridMarketingEmailingList>();
+            services.AddDistributedMemoryCache();
+            services.AddSingleton<IJsonStringLocalizer, JsonStringLocalizer>();
+            services.AddSingleton<IJsonStringLocalizerProvider, JsonStringLocalizerProvider>();
             services.AddScoped<IBusinessLogic, BusinessLogic>();
 
             services.ConfigureSwagger();
