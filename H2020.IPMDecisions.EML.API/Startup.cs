@@ -10,6 +10,7 @@ using H2020.IPMDecisions.EML.BLL;
 using AutoMapper;
 using H2020.IPMDecisions.EML.Core.Profiles;
 using H2020.IPMDecisions.EML.BLL.Providers;
+using H2020.IPMDecisions.EML.API.Filters;
 
 namespace H2020.IPMDecisions.EML.API
 {
@@ -77,12 +78,13 @@ namespace H2020.IPMDecisions.EML.API
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseMiddleware<LocationMiddleware>();
 
             var swaggerBasePath = Configuration["MicroserviceInternalCommunication:EmailMicroservice"];
             app.UseSwagger(c =>
             {
-                c.RouteTemplate = swaggerBasePath+ "swagger/{documentName}/swagger.json";
-            });            
+                c.RouteTemplate = swaggerBasePath + "swagger/{documentName}/swagger.json";
+            });
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint($"/{swaggerBasePath}swagger/v1/swagger.json", "H2020 IPM Decisions - Email Service API");

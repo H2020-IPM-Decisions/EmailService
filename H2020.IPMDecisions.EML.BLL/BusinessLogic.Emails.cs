@@ -35,7 +35,7 @@ namespace H2020.IPMDecisions.EML.BLL
             try
             {
                 var toAddress = registrationEmail.ToAddress;
-                var subject = configuration["EmailTemplates:Registration:Subject"];
+                var subject = this.jsonStringLocalizer["registration.subject"].ToString();
 
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
                     EmailTemplates.RegistrationEmailTemplatePath,

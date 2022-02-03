@@ -1,4 +1,5 @@
 using System.IO;
+using System.Threading;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
@@ -15,20 +16,20 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
             this.distributedCache = distributedCache;
         }
 
-        public LocalizedString this[string name, string language]
+        public LocalizedString this[string name]
         {
             get
             {
-                string value = GetLocalizedString(name, language);
+                string value = GetLocalizedString(name);
                 return new LocalizedString(name, value ?? name, value == null);
             }
         }
 
-        public LocalizedString this[string name, string language, params object[] arguments]
+        public LocalizedString this[string name, params object[] arguments]
         {
             get
             {
-                var value = this[name, language];
+                var value = this[name];
 
                 return !value.ResourceNotFound
                     ? new LocalizedString(name, string.Format(value.Value, arguments), false)
@@ -36,9 +37,9 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
             }
         }
 
-        private string GetLocalizedString(string key, string language)
+        private string GetLocalizedString(string key)
         {
-            string relativeFilePath = $"Resources/location.{language}.json";
+            string relativeFilePath = $"Resources/location.{Thread.CurrentThread.CurrentCulture}.json";
             string fullFilePath = Path.GetFullPath(relativeFilePath);
 
             if (!File.Exists(fullFilePath))
@@ -49,7 +50,7 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
 
             if (File.Exists(fullFilePath))
             {
-                string cacheKey = $"locale_{language}_{key}";
+                string cacheKey = $"locale_{Thread.CurrentThread.CurrentCulture}_{key}";
                 string cacheValue = distributedCache.GetString(cacheKey);
                 if (!string.IsNullOrEmpty(cacheValue)) return cacheValue;
 
