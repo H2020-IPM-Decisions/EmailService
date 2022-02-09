@@ -14,13 +14,13 @@ namespace H2020.IPMDecisions.EML.BLL
             try
             {
                 var toAddress = forgotPasswordEmail.ToAddress;
-                var subject = configuration["EmailTemplates:ForgotPassword:Subject"];
-
+                AddTranslatedBodyPartsToEmail(forgotPasswordEmail, "forgot_password");
+                AddTranslatedSharedPartsToEmail(forgotPasswordEmail);
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
                     EmailTemplates.ForgotPasswordEmailTemplatePath,
                     forgotPasswordEmail);
 
-                await emailSender.SendSingleEmailAsync(toAddress, subject, body);
+                await emailSender.SendSingleEmailAsync(toAddress, forgotPasswordEmail.TranslatedEmailBodyParts.Subject, body);
                 return GenericResponseBuilder.Success();
             }
             catch (Exception ex)
@@ -112,6 +112,30 @@ namespace H2020.IPMDecisions.EML.BLL
                 // ToDo log Error         
                 return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
             }
+        }
+
+
+        private void AddTranslatedBodyPartsToEmail(EmailDto email, string emailType)
+        {
+            email.TranslatedEmailBodyParts = new TranslatedEmailBodyParts()
+            {
+                Body = this.jsonStringLocalizer[$"{emailType}.body"].ToString(),
+                Button = this.jsonStringLocalizer[$"{emailType}.button"].ToString(),
+                Subject = this.jsonStringLocalizer[$"{emailType}.subject"].ToString()
+            };
+        }
+
+        private void AddTranslatedSharedPartsToEmail(EmailDto email)
+        {
+            email.TranslatedSharedEmailParts = new TranslatedSharedEmailParts()
+            {
+                Greeting = this.jsonStringLocalizer[$"shared.greeting"].ToString(),
+                Disclaimer = this.jsonStringLocalizer["shared.disclaimer"].ToString(),
+                Footer = this.jsonStringLocalizer["shared.footer"].ToString(),
+                Funding = this.jsonStringLocalizer["shared.funding"].ToString(),
+                Thanks = this.jsonStringLocalizer["shared.thanks"].ToString(),
+                Team = this.jsonStringLocalizer["shared.team"].ToString()
+            };
         }
     }
 }
