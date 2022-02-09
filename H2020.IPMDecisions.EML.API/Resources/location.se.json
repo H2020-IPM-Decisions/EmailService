@@ -22,7 +22,7 @@
         "body":"Your account has been inactive for {0} months. This account will be deleted along with all associated data unless you log back in before {1}."
     },
     "shared": {
-        "greeting": "Hej",        
+        "greeting": "Hej, {0}",        
         "thanks": "Tak"
     }
 }

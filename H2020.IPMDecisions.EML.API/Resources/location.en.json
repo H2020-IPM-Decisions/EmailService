@@ -1,7 +1,7 @@
 {
     "registration": {
         "subject": "Welcome to IPM Decisions",
-        "body":"Welcome to IPM Decisions! Thank you for registering your account, please click the button below to confirm your email. Confirmation must be made within 24 hours. ",
+        "body":"Welcome to IPM Decisions! Thank you for registering your account, please click the button below to confirm your email. Confirmation must be made within {0} hours. ",
         "button":"Confirm Your Email"
     },
     "forgot_password": {
@@ -23,7 +23,7 @@
         "body":"Your account has been inactive for {0} months. This account will be deleted along with all associated data unless you log back in before {1}."
     },
     "shared": {
-        "greeting": "Hi",
+        "greeting": "Hi, {0}",
         "disclaimer": "Disclaimer",
         "footer": "IPM Decisions is an automatic platform for Decision Support Systems for agricultural weeds, invertebrate pests, and diseases, developed by the EU IPM Decisions project (817617). The cooperating partners have no economic responsibility whatsoever for losses, damages, or inconveniences arising out of the use of or inability to use this service.",
         "funding": "This project has received funding from the European Union Horizon 2020 Research and Innovation Programme, under grant agreement number 817617.",
