@@ -26,7 +26,7 @@
         "greeting": "Hi, {0}",
         "disclaimer": "Disclaimer",
         "footer": "IPM Decisions is an automatic platform for Decision Support Systems for agricultural weeds, invertebrate pests, and diseases, developed by the EU IPM Decisions project (817617). The cooperating partners have no economic responsibility whatsoever for losses, damages, or inconveniences arising out of the use of or inability to use this service.",
-        "funding": "This project has received funding from the European Union Horizon 2020 Research and Innovation Programme, under grant agreement number 817617.",
+        "funding": "This project has received funding from the European Union Horizon 2020. Research and Innovation Programme, under grant agreement number 817617.",
         "thanks": "Thank you",
         "team": "The IPM Decisions Team."
     }
