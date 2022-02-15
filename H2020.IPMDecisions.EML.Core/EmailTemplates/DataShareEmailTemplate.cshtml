@@ -226,26 +226,11 @@ img {-ms-interpolation-mode: bicubic;}
                                     height="100%" valign="top" bgcolor="">
                                     <div>
                                       <div style="font-family: inherit; text-align: inherit">
-                                        <span style="font-family: arial, helvetica, sans-serif; font-size: 16px">Hi,
-                                        </span>
-                                        <span
-                                          style="font-family: arial, helvetica, sans-serif; font-size: 16px; color: #000000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; text-align: center">@Model.ToAddress
-                                        </span>
+                                        <span style="font-family: arial, helvetica, sans-serif; font-size: 16px">@Model.TranslatedSharedEmailParts.Greeting</span>
                                       </div>
                                       <div style="font-family: inherit; text-align: inherit">
                                         <span
-                                          style="font-family: arial, helvetica, sans-serif; font-size: 16px; color: black">The
-                                          user </span>
-                                        <span
-                                          style="font-family: arial, helvetica, sans-serif; font-size: 16px; color: black"><strong>@Model.DataRequesterName</strong></span>
-                                        <span
-                                          style="font-family: arial, helvetica, sans-serif; font-size: 16px; color: black">,
-                                          would like to access your farm data.</span>
-                                      </div>
-                                      <div style="font-family: inherit; text-align: start">
-                                        <span
-                                          style="font-family: arial, helvetica, sans-serif; font-size: 16px; color: black">
-                                          Please log in to your account to accept or decline this request.
+                                          style="font-family: arial, helvetica, sans-serif; font-size: 16px; color: black">@Model.TranslatedEmailBodyParts.Body
                                         </span> &nbsp;
                                       </div>
                                       <div>
@@ -262,11 +247,11 @@ img {-ms-interpolation-mode: bicubic;}
                                     height="100%" valign="top" bgcolor="">
                                     <div>
                                       <div style="font-family: inherit; text-align: inherit">
-                                        <span style="font-size: 16px">Thank&nbsp;you,
+                                        <span style="font-size: 16px">@Model.TranslatedSharedEmailParts.Thanks,
                                         </span>
                                       </div>
                                       <div style="font-family: inherit; text-align: inherit">
-                                        <span style="font-size: 16px">The IPM Decisions Team.
+                                        <span style="font-size: 16px">@Model.TranslatedSharedEmailParts.Team
                                         </span>
                                       </div>
                                       <div>
@@ -379,17 +364,7 @@ img {-ms-interpolation-mode: bicubic;}
                                                     <div style="font-family: inherit; text-align: center">IPM Decisions
                                                     </div>
                                                     <div style="font-family: inherit; text-align: center">
-                                                      <span style="overflow-wrap: break-word; font-size: 11px">This
-                                                        project has received funding from the European Union Horizon
-                                                        2020
-                                                      </span>
-                                                      <span style="font-size: 11px">&nbsp;
-                                                      </span>
-                                                    </div>
-                                                    <div style="font-family: inherit; text-align: center">
-                                                      <span style="overflow-wrap: break-word; font-size: 11px">Research
-                                                        and Innovation Programme, under grant agreement number 817617
-                                                      </span>
+                                                      <span style="overflow-wrap: break-word; font-size: 11px">@Model.TranslatedSharedEmailParts.Funding</span>
                                                       <span style="font-size: 11px"> &nbsp;
                                                       </span>
                                                       <br>
@@ -458,16 +433,11 @@ img {-ms-interpolation-mode: bicubic;}
                                       height="100%" valign="top" bgcolor="" role="module-content">
                                       <div>
                                         <div style="font-family: inherit; text-align: center">
-                                          <span style="font-size: 10px">Disclaimer
+                                          <span style="font-size: 10px">@Model.TranslatedSharedEmailParts.Disclaimer
                                           </span>
                                         </div>
                                         <div style="font-family: inherit; text-align: inherit">
-                                          <span style="font-size: 9px">IPM Decisions is an automatic platform for
-                                            Decision Support Systems for agricultural weeds, invertebrate pests, and
-                                            diseases, developed by the EU IPM Decisions project (817617). The
-                                            cooperating partners have no economic responsibility whatsoever for losses,
-                                            damages, or inconveniences arising out of the use of or inability to use
-                                            this service.
+                                          <span style="font-size: 9px">@Model.TranslatedSharedEmailParts.Footer
                                           </span>
                                         </div>
                                         <div>

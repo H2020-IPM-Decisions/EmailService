@@ -1,0 +1,28 @@
+{
+    "registration": {
+        "subject": "Welcome to IPM Decisions",
+        "body":"Welcome to IPM Decisions! Thank you for registering your account, please click the button below to confirm your email. Confirmation must be made within 24 hours. ",
+        "button":"Confirm Your Email"
+    },
+    "forgot_password": {
+        "subject": "Återställ lösenordet för IPM-beslut",
+        "button":"Återställ lösenord"
+    },
+    "re_confirm_email": {
+        "subject": "Please confirm your IPM Decisions email",
+        "body":"Please click the button below to confirm your email. ",
+        "button":"Confirm Your Email"
+    },
+    "data_request": {
+        "subject": "Access requested to your IPM Decisions data",
+        "body":"The user {0}, would like to access your farm data. Please log in to your account to accept or decline this request."
+    },
+    "inactive_user": {
+        "subject": "IPM Decisions inactive account",
+        "body":"Your account has been inactive for {0} months. This account will be deleted along with all associated data unless you log back in before {1}."
+    },
+    "shared": {
+        "greeting": "Hej, {0}",        
+        "thanks": "Tak"
+    }
+}
