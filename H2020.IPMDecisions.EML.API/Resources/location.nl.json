@@ -1,0 +1,33 @@
+{
+    "registration": {
+        "subject": "",
+        "body":"",
+        "button":""
+    },
+    "forgot_password": {
+        "subject": "",
+        "body": "",
+        "button":""
+    },
+    "re_confirm_email": {
+        "subject": "",
+        "body": "",
+        "button": ""
+    },
+    "data_request": {
+        "subject": "",
+        "body": ""
+    },
+    "inactive_user": {
+        "subject": "",
+        "body":""
+    },
+    "shared": {
+        "greeting": "",
+        "disclaimer":"",
+        "footer": "",
+        "funding": "",
+        "thanks": "",
+        "team": ""
+    }
+}

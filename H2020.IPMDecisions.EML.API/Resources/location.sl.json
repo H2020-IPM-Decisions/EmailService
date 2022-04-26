@@ -1,0 +1,34 @@
+{
+    "reconfirm_email": {
+        "body": "Potrdite svoj e-poštni naslov", 
+        "button": "", 
+        "subject": "Potrdite svoj e-poštni naslov"
+    }, 
+    "forgot_password": {
+        "body": "Prejeli smo zahtevo za spremembo gesla za vaš račun. Kliknite spodnji gumb za ponastavitev gesla. ", 
+        "button": "Ponastavite geslo", 
+        "subject": "Ponastavite svoje geslo"
+    }, 
+    "inactive_user": {
+        "body": "Vaš račun je neaktiven že {0} mesecev. Ta račun bo izbrisan skupaj z vsemi povezanimi podatki, razen če se ponovno prijavite pred {1}. ", 
+        "subject": "Neaktivni račun IPM Decisions"
+    }, 
+    "registration": {
+        "body": "Dobrodošli v IPM Decisions!\nZahvaljujemo se vam za registracijo računa, kliknite spodnji gumb, da potrdite svoj elektronski naslov. Potrditev je potrebno opraviti v 24 urah. ", 
+        "button": "Potrdite svoj e-poštni naslov", 
+        "subject": "Dobrodošli v IPM Decisions"
+    }, 
+    "shared": {
+        "funding": "Ta projekt je bil financiran iz sredstev Evropske unije v okviru programa Obzorje 2020. Program za raziskave in inovacije, v okviru sporazuma o dodelitvi sredstev številka 817617  ", 
+        "footer": "IPM Decisions je samodejna platforma za sisteme za podporo odločanju o kmetijskih plevelih, nevretenčarskih škodljivcih in boleznih, razvita v okviru evropskega projekta IPM Decisions (817617). Sodelujoči partnerji ne prevzemajo nobene ekonomske odgovornosti za izgube, škodo ali nevšečnosti, ki bi nastale zaradi uporabe ali nezmožnosti uporabe te storitve.", 
+        "greeting": "Pozdravljeni, {0}", 
+        "thanks": "Hvala.", 
+        "team": "Ekipa IPM Decisions", 
+        "disclamer": "Izjava o omejitvi odgovornosti", 
+        "disclaimer": ""
+    }, 
+    "data_request": {
+        "body": "Uporabnik {0} želi dostopati do podatkov o vaši kmetiji.\nProsimo, da se prijavite v svoj račun in sprejmete ali zavrnete to zahtevo.  ", 
+        "subject": "Zahtevan je dostop do vaših podatkov IPM Decisions"
+    }
+}

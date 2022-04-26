@@ -58,7 +58,7 @@ namespace H2020.IPMDecisions.EML.BLL
             try
             {
                 var toAddress = registrationEmail.ToAddress;
-                AddTranslatedBodyPartsToEmail(registrationEmail, "re_confirm_email");
+                AddTranslatedBodyPartsToEmail(registrationEmail, "reconfirm_email");
                 AddTranslatedSharedPartsToEmail(registrationEmail);
 
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
