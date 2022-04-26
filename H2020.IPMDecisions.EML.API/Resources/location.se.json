@@ -1,28 +1,34 @@
 {
-    "registration": {
-        "subject": "Welcome to IPM Decisions",
-        "body":"Welcome to IPM Decisions! Thank you for registering your account, please click the button below to confirm your email. Confirmation must be made within 24 hours. ",
-        "button":"Confirm Your Email"
-    },
+    "reconfirm_email": {
+        "body": "Bekräfta din e-post", 
+        "button": "", 
+        "subject": "Bekräfta e-postmeddelandet från IPM Decsions"
+    }, 
     "forgot_password": {
-        "subject": "Återställ lösenordet för IPM-beslut",
-        "button":"Återställ lösenord"
-    },
-    "re_confirm_email": {
-        "subject": "Please confirm your IPM Decisions email",
-        "body":"Please click the button below to confirm your email. ",
-        "button":"Confirm Your Email"
-    },
-    "data_request": {
-        "subject": "Access requested to your IPM Decisions data",
-        "body":"The user {0}, would like to access your farm data. Please log in to your account to accept or decline this request."
-    },
+        "body": "Vi har fått en begäran om lösenordsändring för ditt konto. Klicka på knappen nedan för att återställa ditt lösenord. ", 
+        "button": "Återställ lösenord", 
+        "subject": "Återställ lösenordet för IPM Decisions"
+    }, 
     "inactive_user": {
-        "subject": "IPM Decisions inactive account",
-        "body":"Your account has been inactive for {0} months. This account will be deleted along with all associated data unless you log back in before {1}."
-    },
+        "body": "Ditt konto har varit inaktivt i {0} månader. Det här kontot kommer att raderas tillsammans med alla associerade data om du inte loggar in igen innan {1}. ", 
+        "subject": "Inaktivt konto på IPM Decisions"
+    }, 
+    "registration": {
+        "body": "Välkommen till IPM-beslut!\nTack för att du registrerar ditt konto, klicka på knappen nedan för att bekräfta din e-post. Bekräftelse måste göras inom 24 timmar. ", 
+        "button": "Bekräfta din e-post", 
+        "subject": "Välkommen till IPM Decisions"
+    }, 
     "shared": {
-        "greeting": "Hej, {0}",        
-        "thanks": "Tak"
+        "funding": "Detta projekt har fått finansiering från Europeiska unionens forsknings- och innovationsprogram Horizon 2020 med bidragsavtalsnummer 817617  ", 
+        "footer": "IPM Decisions är en automatisk plattform för beslutsstödsystem för  ogräs, insekter och sjukdomar inom jordbruk. Plattformen har utvecklats inom EU:s projektet IPM Decisions (817617). Parterna i projektet har inget ekonomiskt ansvar för förluster, skador eller olägenheter som uppstår till följd av användningen av eller oförmågan att använda denna tjänst.", 
+        "greeting": "Hej, {0}", 
+        "thanks": "Tack", 
+        "team": "IPM Decisions teamet", 
+        "disclamer": "Ansvarsfriskrivning", 
+        "disclaimer": ""
+    }, 
+    "data_request": {
+        "body": "Användaren {0} vill komma åt dina gårddata\nLogga in på ditt konto för att acceptera eller avvisa denna begäran.  ", 
+        "subject": "Åtkomst begärs till dina data på IPM Decisions"
     }
 }
