@@ -39,6 +39,7 @@ namespace H2020.IPMDecisions.EML.API
             services.ConfigureEmailSettings(Configuration);
 
             services.AddAutoMapper(typeof(MainProfile));
+            services.ConfigureLogger(Configuration);
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IMarketingEmailingList, SendGridMarketingEmailingList>();

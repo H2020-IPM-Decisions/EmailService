@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
+using NLog;
+using NLog.Extensions.Logging;
 
 namespace H2020.IPMDecisions.EML.Extensions
 {
@@ -158,7 +160,12 @@ namespace H2020.IPMDecisions.EML.Extensions
             });
         }
 
-        public static IEnumerable<string> Audiences(string audiences)
+        internal static void ConfigureLogger(this IServiceCollection services, IConfiguration config)
+        {
+            LogManager.Configuration = new NLogLoggingConfiguration(config.GetSection("NLog"));
+        }
+
+        private static IEnumerable<string> Audiences(string audiences)
         {
             var listOfAudiences = new List<string>();
             if (string.IsNullOrEmpty(audiences)) return listOfAudiences;

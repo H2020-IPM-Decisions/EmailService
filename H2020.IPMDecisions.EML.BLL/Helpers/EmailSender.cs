@@ -4,17 +4,24 @@ using H2020.IPMDecisions.EML.BLL.Providers;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using System;
+using Microsoft.Extensions.Logging;
 
 namespace H2020.IPMDecisions.EML.BLL.Helpers
 {
     public class EmailSender : IEmailSender
     {
-        private readonly EmailSettingsProvider emailSettings;        
+        private readonly EmailSettingsProvider emailSettings;
+        private readonly ILogger<EmailSender> logger;
 
-        public EmailSender(IOptions<EmailSettingsProvider> emailSettings)
+        public EmailSender(
+            IOptions<EmailSettingsProvider> emailSettings,
+            ILogger<EmailSender> logger)
         {
-            this.emailSettings = emailSettings.Value 
+            this.emailSettings = emailSettings.Value
                 ?? throw new System.ArgumentNullException(nameof(emailSettings));
+            this.logger = logger
+                ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task SendSingleEmailAsync(string toAddress, string subject, string body, EmailPriority priority = EmailPriority.Normal)
@@ -38,16 +45,15 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
 
                     if (emailSettings.UseSmtpLoginCredentials)
                         await client.AuthenticateAsync(emailSettings.SmtpUsername, emailSettings.SmtpPassword);
-
                     await client.SendAsync(message);
                     await client.DisconnectAsync(true);
                 };
             }
             catch (System.Exception ex)
             {
-                // ToDo Log error       
+                logger.LogError(string.Format("Error SendSingleEmailAsync. {0}", ex.Message), ex);
                 throw ex;
-            }            
+            }
         }
 
         private static void SetEmailPriority(EmailPriority priority, MimeMessage message)
