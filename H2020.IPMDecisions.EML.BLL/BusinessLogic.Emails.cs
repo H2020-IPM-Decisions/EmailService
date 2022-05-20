@@ -4,6 +4,7 @@ using H2020.IPMDecisions.EML.BLL.Helpers;
 using H2020.IPMDecisions.EML.Core.Dtos;
 using H2020.IPMDecisions.EML.Core.EmailTemplates;
 using H2020.IPMDecisions.EML.Core.Models;
+using Microsoft.Extensions.Logging;
 
 namespace H2020.IPMDecisions.EML.BLL
 {
@@ -25,7 +26,7 @@ namespace H2020.IPMDecisions.EML.BLL
             }
             catch (Exception ex)
             {
-                // ToDo log Error         
+                logger.LogError(string.Format("Error SendForgotPasswordEmail. {0}", ex.Message), ex);
                 return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
             }
         }
@@ -48,7 +49,7 @@ namespace H2020.IPMDecisions.EML.BLL
             }
             catch (Exception ex)
             {
-                // ToDo log Error         
+                logger.LogError(string.Format("Error SendRegistrationEmail. {0}", ex.Message), ex);
                 return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
             }
         }
@@ -70,7 +71,7 @@ namespace H2020.IPMDecisions.EML.BLL
             }
             catch (Exception ex)
             {
-                // ToDo log Error         
+                logger.LogError(string.Format("Error ResendConfirmationEmail. {0}", ex.Message), ex);
                 return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
             }
         }
@@ -92,7 +93,7 @@ namespace H2020.IPMDecisions.EML.BLL
             }
             catch (Exception ex)
             {
-                // ToDo log Error         
+                logger.LogError(string.Format("Error SendDataRequestEmail. {0}", ex.Message), ex);
                 return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
             }
         }
@@ -114,7 +115,7 @@ namespace H2020.IPMDecisions.EML.BLL
             }
             catch (Exception ex)
             {
-                // ToDo log Error         
+                logger.LogError(string.Format("Error SendInactiveUserEmail. {0}", ex.Message), ex);
                 return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
             }
         }

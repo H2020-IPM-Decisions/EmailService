@@ -49,7 +49,7 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
                     await client.DisconnectAsync(true);
                 };
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 logger.LogError(string.Format("Error SendSingleEmailAsync. {0}", ex.Message), ex);
                 throw ex;
