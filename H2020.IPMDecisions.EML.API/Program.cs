@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 
 namespace H2020.IPMDecisions.EML.API
 {
@@ -21,6 +17,14 @@ namespace H2020.IPMDecisions.EML.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                .ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+                /*Allow console logging to assist system testing.
+                If there are problems with NLog Configuration
+                then no error messages are visible.*/
+                logging.AddConsole();
+            }).UseNLog();
     }
 }

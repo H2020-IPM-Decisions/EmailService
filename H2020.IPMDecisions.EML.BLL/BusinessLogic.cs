@@ -1,9 +1,7 @@
 using System;
-using System.Threading.Tasks;
 using H2020.IPMDecisions.EML.BLL.Helpers;
-using H2020.IPMDecisions.EML.Core.Dtos;
-using H2020.IPMDecisions.EML.Core.Models;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace H2020.IPMDecisions.EML.BLL
 {
@@ -13,11 +11,14 @@ namespace H2020.IPMDecisions.EML.BLL
         private readonly IConfiguration configuration;
         private readonly IMarketingEmailingList marketingEmailingList;
         private readonly IJsonStringLocalizer jsonStringLocalizer;
+        private readonly ILogger<BusinessLogic> logger;
 
         public BusinessLogic(
             IEmailSender emailSender,
             IConfiguration configuration,
-            IMarketingEmailingList marketingEmailingList, IJsonStringLocalizer jsonStringLocalizer)
+            IMarketingEmailingList marketingEmailingList,
+            IJsonStringLocalizer jsonStringLocalizer,
+            ILogger<BusinessLogic> logger)
         {
             this.configuration = configuration
                 ?? throw new ArgumentNullException(nameof(configuration));
@@ -27,6 +28,8 @@ namespace H2020.IPMDecisions.EML.BLL
                 ?? throw new ArgumentNullException(nameof(marketingEmailingList));
             this.jsonStringLocalizer = jsonStringLocalizer
                 ?? throw new ArgumentNullException(nameof(jsonStringLocalizer));
+            this.logger = logger
+                ?? throw new ArgumentNullException(nameof(logger));
         }
     }
 }
