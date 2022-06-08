@@ -1,7 +1,7 @@
 {
     "reconfirm_email": {
-        "body": "Confirmez votre courriel", 
-        "button": "", 
+        "body": "Veuillez cliquer sur le bouton ci-dessous pour confirmer votre email.", 
+        "button": "Confirmez votre courriel", 
         "subject": "Veuillez confirmer votre courriel IPM Decisions"
     }, 
     "forgot_password": {
@@ -24,8 +24,7 @@
         "greeting": "Bonjour, {0}", 
         "thanks": "Merci", 
         "team": "L'équipe d'IPM Decisions", 
-        "disclamer": "Disclaimer", 
-        "disclaimer": ""
+        "disclaimer": "Disclaimer"
     }, 
     "data_request": {
         "body": " L'utilisateur {0}, souhaite accéder aux données de votre exploitation.\nVeuillez vous connecter à votre compte pour accepter ou refuser cette demande.  ", 

@@ -1,7 +1,7 @@
 {
     "reconfirm_email": {
-        "body": "Bekræft din email", 
-        "button": "", 
+        "body": "Klik venligst på knappen nedenfor for at bekræfte din e-mail.", 
+        "button": "Bekræft din email", 
         "subject": "Bekræft din IPM Decisionsmail"
     }, 
     "forgot_password": {
@@ -24,8 +24,7 @@
         "greeting": "Hej, {0}", 
         "thanks": "Tak", 
         "team": "IPM beslutnings teamet", 
-        "disclamer": "Ansvarsfraskrivelse", 
-        "disclaimer": ""
+        "disclaimer": "Ansvarsfraskrivelse"
     }, 
     "data_request": {
         "body": "Brugeren {0} vil gerne have adgang til dine landbrugsdata.\nLog venligst ind på din konto for at acceptere eller afvise denne anmodning.", 

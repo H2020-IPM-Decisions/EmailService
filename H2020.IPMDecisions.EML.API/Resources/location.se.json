@@ -1,7 +1,7 @@
 {
     "reconfirm_email": {
-        "body": "Bekräfta din e-post", 
-        "button": "", 
+        "body": "Klicka på knappen nedan för att bekräfta din e-post.", 
+        "button": "Bekräfta din e-post", 
         "subject": "Bekräfta e-postmeddelandet från IPM Decsions"
     }, 
     "forgot_password": {
@@ -24,8 +24,7 @@
         "greeting": "Hej, {0}", 
         "thanks": "Tack", 
         "team": "IPM Decisions teamet", 
-        "disclamer": "Ansvarsfriskrivning", 
-        "disclaimer": ""
+        "disclaimer": "Ansvarsfriskrivning"
     }, 
     "data_request": {
         "body": "Användaren {0} vill komma åt dina gårddata\nLogga in på ditt konto för att acceptera eller avvisa denna begäran.  ", 

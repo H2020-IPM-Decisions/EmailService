@@ -1,7 +1,7 @@
 {
     "reconfirm_email": {
-        "body": "Potrdite svoj e-poštni naslov", 
-        "button": "", 
+        "body": "Kliknite spodnji gumb, da potrdite svoj elektronski naslov.", 
+        "button": "Potrdite svoj e-poštni naslov", 
         "subject": "Potrdite svoj e-poštni naslov"
     }, 
     "forgot_password": {
@@ -24,8 +24,7 @@
         "greeting": "Pozdravljeni, {0}", 
         "thanks": "Hvala.", 
         "team": "Ekipa IPM Decisions", 
-        "disclamer": "Izjava o omejitvi odgovornosti", 
-        "disclaimer": ""
+        "disclaimer": "Izjava o omejitvi odgovornosti"
     }, 
     "data_request": {
         "body": "Uporabnik {0} želi dostopati do podatkov o vaši kmetiji.\nProsimo, da se prijavite v svoj račun in sprejmete ali zavrnete to zahtevo.  ", 

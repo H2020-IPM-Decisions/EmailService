@@ -1,7 +1,7 @@
 {
     "reconfirm_email": {
-        "body": "Confirm Your Email", 
-        "button": "", 
+        "body": "Please click the button below to confirm your email.", 
+        "button": "Confirm Your Email", 
         "subject": "Please confirm your IPM Decisions email"
     }, 
     "forgot_password": {
