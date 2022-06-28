@@ -88,6 +88,21 @@ namespace H2020.IPMDecisions.EML.API.Controllers
             if (response.IsSuccessful)
                 return Ok();
 
+            return
+             BadRequest(new { message = response.ErrorMessage });
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost("SendInternalReport", Name = "SendInternalReport")]
+        // POST: api/internalcall/SendInternalReport
+        public async Task<IActionResult> SendInternalReport([FromBody] InternalReportDto inactiveUserDto)
+        {
+            var response = await businessLogic.SendInternalReportEmail(inactiveUserDto);
+
+            if (response.IsSuccessful)
+                return Ok();
+
             return BadRequest(new { message = response.ErrorMessage });
         }
     }

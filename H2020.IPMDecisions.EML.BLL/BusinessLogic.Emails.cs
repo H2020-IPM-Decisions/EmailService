@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using H2020.IPMDecisions.EML.BLL.Helpers;
 using H2020.IPMDecisions.EML.Core.Dtos;
@@ -108,7 +109,7 @@ namespace H2020.IPMDecisions.EML.BLL
 
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
                     EmailTemplates.InactiveUserEmailTemplatePath,
-                    inactiveUserDto); ;
+                    inactiveUserDto);
 
                 await emailSender.SendSingleEmailAsync(toAddress, inactiveUserDto.TranslatedEmailBodyParts.Subject, body);
                 return GenericResponseBuilder.Success();
@@ -116,6 +117,26 @@ namespace H2020.IPMDecisions.EML.BLL
             catch (Exception ex)
             {
                 logger.LogError(string.Format("Error SendInactiveUserEmail. {0}", ex.Message), ex);
+                return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
+            }
+        }
+
+        public async Task<GenericResponse> SendInternalReportEmail(InternalReportDto internalReportDto)
+        {
+            try
+            {
+                var toAddresses = internalReportDto.ToAddresses.Split(";").ToList();
+
+                var dateTime = DateTime.Today.ToString("yyyy_MM_dd");
+                var body = string.Format("Report for this week {0} attached. Thanks", dateTime);
+                var subject = string.Format("IPM Decisions Report user week {0}", dateTime);
+
+                await emailSender.SendEmailWithAttachmentAsync(toAddresses, subject, body);
+                return GenericResponseBuilder.Success();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(string.Format("Error SendInternalReportEmail. {0}", ex.Message), ex);
                 return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
             }
         }
