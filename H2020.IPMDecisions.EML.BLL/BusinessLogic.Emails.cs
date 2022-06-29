@@ -1,10 +1,15 @@
 using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using H2020.IPMDecisions.EML.BLL.Helpers;
 using H2020.IPMDecisions.EML.Core.Dtos;
 using H2020.IPMDecisions.EML.Core.EmailTemplates;
 using H2020.IPMDecisions.EML.Core.Models;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace H2020.IPMDecisions.EML.BLL
 {
@@ -108,7 +113,7 @@ namespace H2020.IPMDecisions.EML.BLL
 
                 var body = await TemplateHelper.GetEmbeddedTemplateHtmlAsStringAsync(
                     EmailTemplates.InactiveUserEmailTemplatePath,
-                    inactiveUserDto); ;
+                    inactiveUserDto);
 
                 await emailSender.SendSingleEmailAsync(toAddress, inactiveUserDto.TranslatedEmailBodyParts.Subject, body);
                 return GenericResponseBuilder.Success();
@@ -116,6 +121,51 @@ namespace H2020.IPMDecisions.EML.BLL
             catch (Exception ex)
             {
                 logger.LogError(string.Format("Error SendInactiveUserEmail. {0}", ex.Message), ex);
+                return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
+            }
+        }
+
+        public async Task<GenericResponse> SendInternalReportEmail(InternalReportDto internalReportDto)
+        {
+            try
+            {
+                var toAddresses = internalReportDto.ToAddresses.Split(";").ToList();
+
+                var dateTime = DateTime.Today.ToString("yyyy_MM_dd");
+                var body = string.Format(@"Report for this week {0} attached. 
+                <p>Please follow these instructions to convert to CSV</p>
+                <p>1. Open file with text editor and remove double quotes from start and end of file</p>
+                <p>2. Copy all the text and go to this website https://www.freeformatter.com/json-escape.html#before-output copy the text and click 'Unscape'</p>
+                <p>3. Copy the 'unscaped' text and go to https://www.convertcsv.com/json-to-csv.htm copy the text and click 'JSON To Excel'</p>
+                <p>4. Save the file and create reports as needed.</p>                
+                Thanks", dateTime);
+                var subject = string.Format("IPM Decisions Report user week {0}", dateTime);
+
+                string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string jsonReportsFolder = Path.Combine(assemblyFolder, "reports");
+                Directory.CreateDirectory(jsonReportsFolder);
+                string jsonFilePath = Path.Combine(jsonReportsFolder, string.Format("report_{0}.json.txt", DateTime.Today.ToString("yyyy_MM_dd")));
+
+                using (StreamWriter file = File.CreateText(jsonFilePath))
+                {
+                    JsonSerializer serializer = new JsonSerializer()
+                    {
+                        Formatting = Formatting.Indented,
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                        StringEscapeHandling = StringEscapeHandling.Default,
+                    };
+                    var unscapedText = Regex.Unescape(internalReportDto.ReportData);
+                    serializer.Serialize(file, unscapedText);
+                    file.Close();
+                    await file.DisposeAsync();
+                }
+                await emailSender.SendEmailWithAttachmentAsync(toAddresses, subject, body, jsonFilePath);
+                File.Delete(jsonFilePath);
+                return GenericResponseBuilder.Success();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(string.Format("Error SendInternalReportEmail. {0}", ex.Message), ex);
                 return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
             }
         }

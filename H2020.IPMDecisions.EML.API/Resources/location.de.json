@@ -1,7 +1,7 @@
 {
     "reconfirm_email": {
-        "body": "Bestätigen Sie Ihre E-Mail", 
-        "button": "", 
+        "body": "Bitte klicken Sie auf die Schaltfläche unten, um Ihre E-Mail zu bestätigen.", 
+        "button": "Bestätigen Sie Ihre E-Mail", 
         "subject": "Bitte bestätigen Sie Ihre IPM Decisions E-Mail"
     }, 
     "forgot_password": {
@@ -24,8 +24,7 @@
         "greeting": "Hallo, {0}", 
         "thanks": "Vielen Dank!", 
         "team": "Das IPM Decisions Team", 
-        "disclamer": "Haftungsausschluss", 
-        "disclaimer": ""
+        "disclaimer": "Haftungsausschluss"
     }, 
     "data_request": {
         "body": "Der Benutzer {0} möchte auf Ihre Betriebsdaten zugreifen.\nBitte melden Sie sich bei Ihrem Konto an, um diese Anfrage anzunehmen oder abzulehnen.  ", 

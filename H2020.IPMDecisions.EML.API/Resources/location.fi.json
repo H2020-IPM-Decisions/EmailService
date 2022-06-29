@@ -1,7 +1,7 @@
 {
     "reconfirm_email": {
-        "body": "Vahvista sähköpostiosoite", 
-        "button": "", 
+        "body": "Ole hyvä ja vahvista sähköpostiosoitteesi allaolevalla painikkeella.", 
+        "button": "Vahvista sähköpostiosoite", 
         "subject": "Vahvista IPM Decisions salasana"
     }, 
     "forgot_password": {
@@ -24,8 +24,7 @@
         "greeting": "Hei {0}", 
         "thanks": "Kiitos", 
         "team": "IPM Decisions -tiimi", 
-        "disclamer": "Vastuuvapauslauseke", 
-        "disclaimer": ""
+        "disclaimer": "Vastuuvapauslauseke"
     }, 
     "data_request": {
         "body": "Käyttäjä {0} pyytää pääsyä tilasi dataan. Ole hyvä ja kirjaudu käyttäjätilillesi, jotta voit hyväksyä tai hylätä pyynnön. ", 

@@ -1,7 +1,7 @@
 {
     "reconfirm_email": {
-        "body": "Patvirtinkite el. pašto adresą", 
-        "button": "", 
+        "body": "Spustelėkite apačioje esantį mygtuką, kad patvirtintumėte savo el. pašto adresą.", 
+        "button": "Patvirtinkite el. pašto adresą", 
         "subject": "Patvirtinkite 'IKOK/IPM sprendimai' el. paštą"
     }, 
     "forgot_password": {
@@ -24,8 +24,7 @@
         "greeting": "Sveiki, {0}", 
         "thanks": "Ačiū", 
         "team": "IKOK/IPM sprendimai' komanda", 
-        "disclamer": "Atsisakymas", 
-        "disclaimer": ""
+        "disclaimer": "Atsisakymas"
     }, 
     "data_request": {
         "body": "Naudotojas {0} nori pasiekti jūsų ūkio duomenis. Jei norite priimti arba atmesti šią užklausą, prisijunkite prie savo paskyros.", 

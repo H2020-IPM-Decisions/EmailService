@@ -18,6 +18,7 @@ namespace H2020.IPMDecisions.EML.BLL
         Task<GenericResponse> DeleteContactFromMailingList(string contactEmail);
         Task<GenericResponse> GetContactFromMailingList(string contactEmail);
         Task<GenericResponse> UpsertContactToMailingList(EmailingListContactDto contactDto);
+        Task<GenericResponse> SendInternalReportEmail(InternalReportDto internalReportDto);
         #endregion
     }
 }
