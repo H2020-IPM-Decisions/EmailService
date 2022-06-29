@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using System.IO;
+using Newtonsoft.Json;
 
 namespace H2020.IPMDecisions.EML.Core.Dtos
 {
@@ -7,5 +7,8 @@ namespace H2020.IPMDecisions.EML.Core.Dtos
     {
         [Required]
         public string ToAddresses { get; set; }
+
+        [Required]
+        public string ReportData { get; set; }
     }
 }
