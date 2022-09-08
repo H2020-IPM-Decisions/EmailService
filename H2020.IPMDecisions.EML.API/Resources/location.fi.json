@@ -1,33 +1,33 @@
 {
-    "reconfirm_email": {
-        "body": "Ole hyvä ja vahvista sähköpostiosoitteesi allaolevalla painikkeella.", 
-        "button": "Vahvista sähköpostiosoite", 
-        "subject": "Vahvista IPM Decisions salasana"
-    }, 
-    "forgot_password": {
-        "body": "Vastaanotimme pyynnön salasanan vaihdosta. Ole hyvä ja vaihda salasana allaolevasta painkkeesta.", 
-        "button": "Vaihda salasana", 
-        "subject": "Vaihda IPM Decisions salasana"
-    }, 
-    "inactive_user": {
-        "body": "Käyttäjätilisi on nyt ollut käyttämättä {0} kuukautta. Jos et kirjaudu järjestelmään ennen {1}, käyttäjätilisi ja kaikki siihen kytkeytyvä tieto poistetaan.", 
-        "subject": "IPM Decisions passiivinen käyttäjätili"
-    }, 
-    "registration": {
-        "body": "Tervetuloa IPM Decisions järjestelmään. Kiitos rekisteröitymisestäsi. Ole hyvä ja vahvista sähköpostiosoitteesi allaolevalla painikkeella. Vahvistamisen tulee tapahtua 24 tunnin kuluessa.", 
-        "button": "Vahvista sähköpostiosoite", 
-        "subject": "Tervetuloa IPM Decisions järjestelmään"
-    }, 
-    "shared": {
-        "funding": "Hanke on saanut rahoitusta Euroopan Unionin Horisontti 2020 -tutkimus ja innovaatio-ohjelmasta (grant agreement 817617)", 
-        "footer": "IPM Decisions on EU:n IPM Decisions -projektin (817617) kehittämä automaattinen alusta päätöksenteon tukijärjestelmille maatalouden rikkakasveille, tuhohyönteisille ja kasvitaudeille. Hankkeen osallistujat eivät ole taloudellisesti vastuussa mistään vahingosta tai haitasta, joka voisi aiheutua joko tämän palvelun käytöstä, taikka siitä ettei palvelu ole käytettävissä. ", 
-        "greeting": "Hei {0}", 
-        "thanks": "Kiitos", 
-        "team": "IPM Decisions -tiimi", 
-        "disclaimer": "Vastuuvapauslauseke"
-    }, 
     "data_request": {
-        "body": "Käyttäjä {0} pyytää pääsyä tilasi dataan. Ole hyvä ja kirjaudu käyttäjätilillesi, jotta voit hyväksyä tai hylätä pyynnön. ", 
+        "body": "Käyttäjä {0} pyytää pääsyä tilasi dataan. Ole hyvä ja kirjaudu käyttäjätilillesi, jotta voit hyväksyä tai hylätä pyynnön.",
         "subject": "Pääsy pyydetty käyttäjän IPM Decisions dataan"
+    },
+    "forgot_password": {
+        "body": "Vastaanotimme pyynnön salasanan vaihdosta. Ole hyvä ja vaihda salasana allaolevasta painkkeesta.",
+        "button": "Vaihda salasana",
+        "subject": "Vaihda IPM Decisions salasana"
+    },
+    "inactive_user": {
+        "body": "Käyttäjätilisi on nyt ollut käyttämättä {0} kuukautta. Jos et kirjaudu järjestelmään ennen {1}, käyttäjätilisi ja kaikki siihen kytkeytyvä tieto poistetaan.",
+        "subject": "IPM Decisions passiivinen käyttäjätili"
+    },
+    "reconfirm_email": {
+        "body": "Ole hyvä ja vahvista sähköpostiosoitteesi allaolevalla painikkeella.",
+        "button": "Vahvista sähköpostiosoite",
+        "subject": "Vahvista IPM Decisions salasana"
+    },
+    "registration": {
+        "body": "Tervetuloa IPM Decisions järjestelmään. Kiitos rekisteröitymisestäsi. Ole hyvä ja vahvista sähköpostiosoitteesi allaolevalla painikkeella. Vahvistamisen tulee tapahtua 24 tunnin kuluessa.",
+        "button": "Vahvista sähköpostiosoite",
+        "subject": "Tervetuloa IPM Decisions järjestelmään"
+    },
+    "shared": {
+        "disclaimer": "Vastuuvapauslauseke",
+        "footer": "IPM Decisions on EU:n IPM Decisions -projektin (817617) kehittämä automaattinen alusta päätöksenteon tukijärjestelmille maatalouden rikkakasveille, tuhohyönteisille ja kasvitaudeille. Hankkeen osallistujat eivät ole taloudellisesti vastuussa mistään vahingosta tai haitasta, joka voisi aiheutua joko tämän palvelun käytöstä, taikka siitä ettei palvelu ole käytettävissä. ",
+        "funding": "Hanke on saanut rahoitusta Euroopan Unionin Horisontti 2020 -tutkimus ja innovaatio-ohjelmasta (grant agreement 817617)",
+        "greeting": "Hei {0}",
+        "team": "IPM Decisions -tiimi",
+        "thanks": "Kiitos"
     }
 }

@@ -1,33 +1,33 @@
 {
-    "registration": {
-        "subject": "",
-        "body":"",
-        "button":""
+    "data_request": {
+        "body": "The user {0}, would like to access your farm data.\nPlease log in to your account to accept or decline this request.",
+        "subject": "Access requested to your IPM Decisions data"
     },
     "forgot_password": {
-        "subject": "",
-        "body": "",
-        "button":""
-    },
-    "re_confirm_email": {
-        "subject": "",
-        "body": "",
-        "button": ""
-    },
-    "data_request": {
-        "subject": "",
-        "body": ""
+        "body": "We have received a password change request for your account. Please click the button below to reset your password.",
+        "button": "Reset Password",
+        "subject": "Reset your IPM Decisions password"
     },
     "inactive_user": {
-        "subject": "",
-        "body":""
+        "body": "Your account has been inactive for {0} months. This account will be deleted along with all associated data unless you log back in before {1}.",
+        "subject": "IPM Decisions inactive account"
+    },
+    "reconfirm_email": {
+        "body": "Please click the button below to confirm your email.",
+        "button": "Confirm Your Email",
+        "subject": "Please confirm your IPM Decisions email"
+    },
+    "registration": {
+        "body": "Welcome to IPM Decisions!\nThank you for registering your account, please click the button below to confirm your email. Confirmation must be made within 24 hours.",
+        "button": "Confirm Your Email",
+        "subject": "Welcome to IPM Decisions"
     },
     "shared": {
-        "greeting": "",
-        "disclaimer":"",
-        "footer": "",
-        "funding": "",
-        "thanks": "",
-        "team": ""
+        "disclaimer": "Disclaimer",
+        "footer": "IPM Decisions is an automatic platform for Decision Support Systems for agricultural weeds, invertebrate pests, and diseases, developed by the EU IPM Decisions project (817617). The cooperating partners have no economic responsibility whatsoever for losses, damages, or inconveniences arising out of the use of or inability to use this service.",
+        "funding": "This project has received funding from the European Union Horizon 2020. Research and Innovation Programme, under grant agreement number 817617",
+        "greeting": "Hi, {0}",
+        "team": "The IPM Decisions Team",
+        "thanks": "Thank you"
     }
 }

@@ -1,33 +1,33 @@
 {
-    "reconfirm_email": {
-        "body": "Klicka på knappen nedan för att bekräfta din e-post.", 
-        "button": "Bekräfta din e-post", 
-        "subject": "Bekräfta e-postmeddelandet från IPM Decsions"
-    }, 
-    "forgot_password": {
-        "body": "Vi har fått en begäran om lösenordsändring för ditt konto. Klicka på knappen nedan för att återställa ditt lösenord. ", 
-        "button": "Återställ lösenord", 
-        "subject": "Återställ lösenordet för IPM Decisions"
-    }, 
-    "inactive_user": {
-        "body": "Ditt konto har varit inaktivt i {0} månader. Det här kontot kommer att raderas tillsammans med alla associerade data om du inte loggar in igen innan {1}. ", 
-        "subject": "Inaktivt konto på IPM Decisions"
-    }, 
-    "registration": {
-        "body": "Välkommen till IPM-beslut!\nTack för att du registrerar ditt konto, klicka på knappen nedan för att bekräfta din e-post. Bekräftelse måste göras inom 24 timmar. ", 
-        "button": "Bekräfta din e-post", 
-        "subject": "Välkommen till IPM Decisions"
-    }, 
-    "shared": {
-        "funding": "Detta projekt har fått finansiering från Europeiska unionens forsknings- och innovationsprogram Horizon 2020 med bidragsavtalsnummer 817617  ", 
-        "footer": "IPM Decisions är en automatisk plattform för beslutsstödsystem för  ogräs, insekter och sjukdomar inom jordbruk. Plattformen har utvecklats inom EU:s projektet IPM Decisions (817617). Parterna i projektet har inget ekonomiskt ansvar för förluster, skador eller olägenheter som uppstår till följd av användningen av eller oförmågan att använda denna tjänst.", 
-        "greeting": "Hej, {0}", 
-        "thanks": "Tack", 
-        "team": "IPM Decisions teamet", 
-        "disclaimer": "Ansvarsfriskrivning"
-    }, 
     "data_request": {
-        "body": "Användaren {0} vill komma åt dina gårddata\nLogga in på ditt konto för att acceptera eller avvisa denna begäran.  ", 
+        "body": "Användaren {0} vill komma åt dina gårddata\nLogga in på ditt konto för att acceptera eller avvisa denna begäran.",
         "subject": "Åtkomst begärs till dina data på IPM Decisions"
+    },
+    "forgot_password": {
+        "body": "Vi har fått en begäran om lösenordsändring för ditt konto. Klicka på knappen nedan för att återställa ditt lösenord.",
+        "button": "Återställ lösenord",
+        "subject": "Återställ lösenordet för IPM Decisions"
+    },
+    "inactive_user": {
+        "body": "Ditt konto har varit inaktivt i {0} månader. Det här kontot kommer att raderas tillsammans med alla associerade data om du inte loggar in igen innan {1}.",
+        "subject": "Inaktivt konto på IPM Decisions"
+    },
+    "reconfirm_email": {
+        "body": "Klicka på knappen nedan för att bekräfta din e-post.",
+        "button": "Bekräfta din e-post",
+        "subject": "Bekräfta e-postmeddelandet från IPM Decsions"
+    },
+    "registration": {
+        "body": "Välkommen till IPM-beslut!\nTack för att du registrerar ditt konto, klicka på knappen nedan för att bekräfta din e-post. Bekräftelse måste göras inom 24 timmar.",
+        "button": "Bekräfta din e-post",
+        "subject": "Välkommen till IPM Decisions"
+    },
+    "shared": {
+        "disclaimer": "Ansvarsfriskrivning",
+        "footer": "IPM Decisions är en automatisk plattform för beslutsstödsystem för  ogräs, insekter och sjukdomar inom jordbruk. Plattformen har utvecklats inom EU:s projektet IPM Decisions (817617). Parterna i projektet har inget ekonomiskt ansvar för förluster, skador eller olägenheter som uppstår till följd av användningen av eller oförmågan att använda denna tjänst.",
+        "funding": "Detta projekt har fått finansiering från Europeiska unionens forsknings- och innovationsprogram Horizon 2020 med bidragsavtalsnummer 817617",
+        "greeting": "Hej, {0}",
+        "team": "IPM Decisions teamet",
+        "thanks": "Tack"
     }
 }
