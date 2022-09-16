@@ -1,33 +1,33 @@
 {
-    "reconfirm_email": {
-        "body": "Klik venligst på knappen nedenfor for at bekræfte din e-mail.", 
-        "button": "Bekræft din email", 
-        "subject": "Bekræft din IPM Decisionsmail"
-    }, 
-    "forgot_password": {
-        "body": "Vi har modtaget en anmodning om ændring af adgangskode til din konto. Klik venligst på knappen nedenfor for at nulstille din adgangskode.", 
-        "button": "Nulstille kodeord", 
-        "subject": "Nulstil din IPM beslutningsadgangskode"
-    }, 
-    "inactive_user": {
-        "body": "Din konto har været inaktiv i {0} måneder. Denne konto vil blive slettet sammen med alle tilknyttede data, medmindre du logger ind igen inden {1}.", 
-        "subject": "IPM Decisions inaktiv konto"
-    }, 
-    "registration": {
-        "body": "Velkommen til IPM-Decisions!\nTak, fordi du har registreret din konto, klik venligst på knappen nedenfor for at bekræfte din e-mail. Bekræftelse skal ske inden for 24 timer.", 
-        "button": "Bekræft din email", 
-        "subject": "Velkommen til IPM Decisions"
-    }, 
-    "shared": {
-        "funding": "Dette projekt har modtaget støtte fra European Union Horizon 2020. Forsknings- og innovationsprogram under tilskudsaftale nummer 817617", 
-        "footer": "IPM Beslutninger er en automatisk platform for beslutningsstøttesystemer til ukrudt i landbruget, hvirvelløse skadedyr og sygdomme, udviklet af EU's IPM Decisions-projekt (817617). De samarbejdspartnere har intet som helst økonomisk ansvar for tab, skader eller gener, der opstår som følge af brugen af ​​eller manglende evne til at bruge denne service.", 
-        "greeting": "Hej, {0}", 
-        "thanks": "Tak", 
-        "team": "IPM beslutnings teamet", 
-        "disclaimer": "Ansvarsfraskrivelse"
-    }, 
     "data_request": {
-        "body": "Brugeren {0} vil gerne have adgang til dine landbrugsdata.\nLog venligst ind på din konto for at acceptere eller afvise denne anmodning.", 
-        "subject": "Adgang anmodet til dine IPM Decisionsdata"
+        "body": "Brugeren {0} vil gerne have adgang til dine landbrugsdata.\nLog venligst ind på din konto for at acceptere eller afvise denne anmodning.",
+        "subject": "Adgang anmodet til dine IPM Decisions data"
+    },
+    "forgot_password": {
+        "body": "Vi har modtaget en anmodning om ændring af adgangskoden til din konto. Klik venligst på knappen nedenfor for at nulstille din adgangskode.",
+        "button": "Nulstil adgangskode",
+        "subject": "Nulstil din IPM Decisions adgangskode"
+    },
+    "inactive_user": {
+        "body": "Din konto har været inaktiv i {0} måneder. Denne konto vil blive slettet sammen med alle tilknyttede data, medmindre du logger ind igen inden {1}.",
+        "subject": "IPM Decisions inaktiv konto"
+    },
+    "reconfirm_email": {
+        "body": "Klik venligst på knappen nedenfor for at bekræfte din e-mail.",
+        "button": "Bekræft din email",
+        "subject": "Bekræft din IPM Decisions mail"
+    },
+    "registration": {
+        "body": "Velkommen til IPM Decisions!\nTak, fordi du har registreret din konto, klik venligst på knappen nedenfor for at bekræfte din e-mail. Bekræftelse skal ske inden for 24 timer.",
+        "button": "Bekræft din email",
+        "subject": "Velkommen til IPM Decisions"
+    },
+    "shared": {
+        "disclaimer": "Ansvarsfraskrivelse",
+        "footer": "IPM Decisions er en automatisk platform for beslutningsstøttesystemer til ukrudt i landbruget, hvirvelløse skadedyr og sygdomme, udviklet af EU's IPM Decisions-projekt (817617). Samarbejdspartnere har intet økonomisk ansvar for tab, skader eller gener, der opstår som følge af brugen af ​​eller manglende evne til at bruge denne service.",
+        "funding": "Dette projekt har modtaget støtte fra European Union Horizon 2020. Forsknings- og innovationsprogram under tilskudsaftale nummer 817617",
+        "greeting": "Hej, {0}",
+        "team": "IPM Decisions teamet",
+        "thanks": "Tak"
     }
 }
