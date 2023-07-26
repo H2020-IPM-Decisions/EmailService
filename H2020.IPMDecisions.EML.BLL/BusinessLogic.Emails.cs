@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using CsvHelper;
 using H2020.IPMDecisions.EML.BLL.Helpers;
 using H2020.IPMDecisions.EML.Core.Dtos;
 using H2020.IPMDecisions.EML.Core.EmailTemplates;
@@ -130,43 +131,46 @@ namespace H2020.IPMDecisions.EML.BLL
             try
             {
                 var toAddresses = internalReportDto.ToAddresses.Split(";").ToList();
-
+                var dataAsCsv = ConvertToCsv(internalReportDto.ReportData);
                 var dateTime = DateTime.Today.ToString("yyyy_MM_dd");
-                var body = string.Format(@"Report for this week {0} attached. 
-                <p>Please follow these instructions to convert to CSV</p>
-                <p>1. Open file with text editor and remove double quotes from start and end of file</p>
-                <p>2. Copy all the text and go to this website https://www.freeformatter.com/json-escape.html#before-output copy the text and click 'Unscape'</p>
-                <p>3. Copy the 'unscaped' text and go to https://www.convertcsv.com/json-to-csv.htm copy the text and click 'JSON To Excel'</p>
-                <p>4. Save the file and create reports as needed.</p>                
+                var body = string.Format(@"<p>Report for this week {0} attached.</p>                
                 Thanks", dateTime);
                 var subject = string.Format("IPM Decisions Report user week {0}", dateTime);
-
-                string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                string jsonReportsFolder = Path.Combine(assemblyFolder, "reports");
-                Directory.CreateDirectory(jsonReportsFolder);
-                string jsonFilePath = Path.Combine(jsonReportsFolder, string.Format("report_{0}.json.txt", DateTime.Today.ToString("yyyy_MM_dd")));
-
-                using (StreamWriter file = File.CreateText(jsonFilePath))
-                {
-                    JsonSerializer serializer = new JsonSerializer()
-                    {
-                        Formatting = Formatting.Indented,
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                        StringEscapeHandling = StringEscapeHandling.Default,
-                    };
-                    var unscapedText = Regex.Unescape(internalReportDto.ReportData);
-                    serializer.Serialize(file, unscapedText);
-                    file.Close();
-                    await file.DisposeAsync();
-                }
-                await emailSender.SendEmailWithAttachmentAsync(toAddresses, subject, body, jsonFilePath);
-                File.Delete(jsonFilePath);
+                await emailSender.SendEmailWithAttachmentAsync(toAddresses, subject, body, dataAsCsv);
                 return GenericResponseBuilder.Success();
             }
             catch (Exception ex)
             {
                 logger.LogError(string.Format("Error SendInternalReportEmail. {0}", ex.Message), ex);
                 return GenericResponseBuilder.NoSuccess(ex.Message.ToString());
+            }
+        }
+
+        private string ConvertToCsv(string data)
+        {
+            List<ReportUserDataJoined> dataAsObject = JsonConvert.DeserializeObject<List<ReportUserDataJoined>>(data);
+            List<ReportUserDataJoinedFlat> flatDataList = new List<ReportUserDataJoinedFlat>();
+            foreach (var userData in dataAsObject)
+            {
+                foreach (var dssModel in userData.FarmData.DssModels)
+                {
+                    flatDataList.Add(new ReportUserDataJoinedFlat
+                    {
+                        Country = userData.FarmData.Country,
+                        FirstCharactersUserId = userData.User.FirstCharactersUserId,
+                        RegistrationDate = userData.User.RegistrationDate,
+                        LastValidAccess = userData.User.LastValidAccess,
+                        UserType = userData.User.UserType,
+                        ModelName = dssModel.ModelName,
+                        ModelId = dssModel.ModelId
+                    });
+                }
+            }
+            using (var writer = new StringWriter())
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(flatDataList);
+                return writer.ToString();
             }
         }
 

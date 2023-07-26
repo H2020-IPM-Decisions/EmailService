@@ -3,19 +3,6 @@ using System.Text.Json.Serialization;
 
 namespace H2020.IPMDecisions.EML.Core.Models
 {
-    public class ReportData
-    {
-        public ReportData()
-        {
-            Farm = new ReportDataFarm();
-        }
-
-        [JsonPropertyName("userId")]
-        public string UserId { get; set; }
-        [JsonPropertyName("farm")]
-        public ReportDataFarm Farm { get; set; }
-    }
-
     public class ReportDataFarm
     {
         public ReportDataFarm()
