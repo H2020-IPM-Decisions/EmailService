@@ -6,6 +6,7 @@ using H2020.IPMDecisions.EML.BLL.Providers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
@@ -58,7 +59,9 @@ namespace H2020.IPMDecisions.EML.Extensions
             {
                 options.AddPolicy("EmailServiceCORS", builder =>
                 {
-                    builder.WithOrigins(allowedHosts);
+                    builder.WithOrigins(allowedHosts)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
                 });
             });
         }
@@ -74,6 +77,11 @@ namespace H2020.IPMDecisions.EML.Extensions
                     setupAction.SerializerSettings.ContractResolver =
                     new CamelCasePropertyNamesContractResolver();
                 });
+
+            services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = 268435456;
+            });
         }
 
         public static void ConfigureSwagger(this IServiceCollection services)
@@ -148,7 +156,8 @@ namespace H2020.IPMDecisions.EML.Extensions
 
         public static void ConfigureEmailSettings(this IServiceCollection services, IConfiguration config)
         {
-            services.Configure<EmailSettingsProvider>(options =>{
+            services.Configure<EmailSettingsProvider>(options =>
+            {
                 options.SmtpServer = config["EmailSettings:SmtpServer"];
                 options.SmtpPort = int.Parse(config["EmailSettings:SmtpPort"]);
                 options.SmtpUsername = config["EmailSettings:SmtpUsername"];

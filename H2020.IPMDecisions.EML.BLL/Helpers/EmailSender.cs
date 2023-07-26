@@ -58,7 +58,7 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
             }
         }
 
-        public async Task SendEmailWithAttachmentAsync(List<string> toAddresses, string subject, string body, string attachmentPath, EmailPriority priority = EmailPriority.Normal)
+        public async Task SendEmailWithAttachmentAsync(List<string> toAddresses, string subject, string body, string csvData, EmailPriority priority = EmailPriority.Normal)
         {
             try
             {
@@ -78,28 +78,25 @@ namespace H2020.IPMDecisions.EML.BLL.Helpers
                 message.To.AddRange(emails);
                 var htmlBodyBuilder = new BodyBuilder { HtmlBody = body };
 
-                using (FileStream attachmentFile = File.OpenRead(attachmentPath))
+                var attachment = new MimePart("file", "csv")
                 {
-                    var attachment = new MimePart("file", "txt")
-                    {
-                        Content = new MimeContent(attachmentFile, ContentEncoding.Default),
-                        ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
-                        ContentTransferEncoding = ContentEncoding.Base64,
-                        FileName = Path.GetFileName(attachmentPath)
-                    };
-                    htmlBodyBuilder.Attachments.Add(attachment);
+                    Content = new MimeContent(new MemoryStream(System.Text.Encoding.UTF8.GetBytes(csvData)), ContentEncoding.Default),
+                    ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                    ContentTransferEncoding = ContentEncoding.Base64,
+                    FileName = string.Format("report_{0}.csv", DateTime.Today.ToString("yyyy_MM_dd"))
+                };
+                htmlBodyBuilder.Attachments.Add(attachment);
 
-                    message.Body = htmlBodyBuilder.ToMessageBody();                   
-                    using (var client = new SmtpClient())
-                    {
-                        await client.ConnectAsync(emailSettings.SmtpServer, emailSettings.SmtpPort, emailSettings.EnableSsl);
+                message.Body = htmlBodyBuilder.ToMessageBody();
+                using (var client = new SmtpClient())
+                {
+                    await client.ConnectAsync(emailSettings.SmtpServer, emailSettings.SmtpPort, emailSettings.EnableSsl);
 
-                        if (emailSettings.UseSmtpLoginCredentials)
-                            await client.AuthenticateAsync(emailSettings.SmtpUsername, emailSettings.SmtpPassword);
-                        await client.SendAsync(message);
-                        await client.DisconnectAsync(true);
-                    };
-                }
+                    if (emailSettings.UseSmtpLoginCredentials)
+                        await client.AuthenticateAsync(emailSettings.SmtpUsername, emailSettings.SmtpPassword);
+                    await client.SendAsync(message);
+                    await client.DisconnectAsync(true);
+                };
             }
             catch (Exception ex)
             {
