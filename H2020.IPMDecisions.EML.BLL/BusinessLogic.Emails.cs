@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -148,36 +149,37 @@ namespace H2020.IPMDecisions.EML.BLL
             }
         }
 
-        private string ConvertToCsv(string data)
+        private string ConvertToCsv(string reportData)
         {
-            List<ReportUserDataJoined> dataAsObject = JsonConvert.DeserializeObject<List<ReportUserDataJoined>>(data);
-            List<ReportUserDataJoinedFlat> flatDataList = new List<ReportUserDataJoinedFlat>();
+            List<ReportUserDataJoined> dataAsObject = JsonConvert.DeserializeObject<List<ReportUserDataJoined>>(reportData);
+            var resultList = new List<ExpandoObject>();
             foreach (var userData in dataAsObject)
             {
-                if (userData?.FarmData != null)
+                if (userData?.FarmData != null && userData.User != null)
                 {
+                    dynamic data = new ExpandoObject();
+                    data.Country = userData.FarmData.Country;
+                    data.FirstCharactersUserId = userData.User.FirstCharactersUserId;
+                    data.RegistrationDate = userData.User.RegistrationDate;
+                    data.LastValidAccess = userData.User.LastValidAccess;
+                    data.UserType = userData.User.UserType;
+                    var dssCount = 0;
                     foreach (var dssModel in userData.FarmData.DssModels)
                     {
-                        if (userData.User != null && dssModel != null)
+                        if (dssModel != null)
                         {
-                            flatDataList.Add(new ReportUserDataJoinedFlat
-                            {
-                                Country = userData.FarmData.Country,
-                                FirstCharactersUserId = userData.User.FirstCharactersUserId,
-                                RegistrationDate = userData.User.RegistrationDate,
-                                LastValidAccess = userData.User.LastValidAccess,
-                                UserType = userData.User.UserType,
-                                ModelName = dssModel.ModelName,
-                                ModelId = dssModel.ModelId
-                            });
+                            data[$"ModelName{dssCount}"] = dssModel.ModelName;
+                            data[$"ModelId{dssCount}"] = dssModel.ModelId;
+                            dssCount = +1;
                         }
                     }
+                    resultList.Add(data);
                 }
             }
             using (var writer = new StringWriter())
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                csv.WriteRecords(flatDataList);
+                csv.WriteRecords(resultList);
                 return writer.ToString();
             }
         }
