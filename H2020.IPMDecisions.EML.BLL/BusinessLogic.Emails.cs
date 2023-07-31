@@ -130,6 +130,8 @@ namespace H2020.IPMDecisions.EML.BLL
         {
             try
             {
+                logger.LogError(internalReportDto.ToAddresses);
+                logger.LogError(internalReportDto.ReportData);
                 var toAddresses = internalReportDto.ToAddresses.Split(";").ToList();
                 var dataAsCsv = ConvertToCsv(internalReportDto.ReportData);
                 var dateTime = DateTime.Today.ToString("yyyy_MM_dd");
@@ -152,18 +154,24 @@ namespace H2020.IPMDecisions.EML.BLL
             List<ReportUserDataJoinedFlat> flatDataList = new List<ReportUserDataJoinedFlat>();
             foreach (var userData in dataAsObject)
             {
-                foreach (var dssModel in userData.FarmData.DssModels)
+                if (userData?.FarmData != null)
                 {
-                    flatDataList.Add(new ReportUserDataJoinedFlat
+                    foreach (var dssModel in userData.FarmData.DssModels)
                     {
-                        Country = userData.FarmData.Country,
-                        FirstCharactersUserId = userData.User.FirstCharactersUserId,
-                        RegistrationDate = userData.User.RegistrationDate,
-                        LastValidAccess = userData.User.LastValidAccess,
-                        UserType = userData.User.UserType,
-                        ModelName = dssModel.ModelName,
-                        ModelId = dssModel.ModelId
-                    });
+                        if (userData.User != null && dssModel != null)
+                        {
+                            flatDataList.Add(new ReportUserDataJoinedFlat
+                            {
+                                Country = userData.FarmData.Country,
+                                FirstCharactersUserId = userData.User.FirstCharactersUserId,
+                                RegistrationDate = userData.User.RegistrationDate,
+                                LastValidAccess = userData.User.LastValidAccess,
+                                UserType = userData.User.UserType,
+                                ModelName = dssModel.ModelName,
+                                ModelId = dssModel.ModelId
+                            });
+                        }
+                    }
                 }
             }
             using (var writer = new StringWriter())
