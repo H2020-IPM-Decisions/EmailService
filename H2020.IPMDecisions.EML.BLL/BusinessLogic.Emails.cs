@@ -156,28 +156,47 @@ namespace H2020.IPMDecisions.EML.BLL
                 if (userData?.FarmData != null && userData.User != null)
                 {
                     dynamic data = new ExpandoObject() as IDictionary<string, Object>;
-                    data.Add("FirstCharactersUserId", userData.User.FirstCharactersUserId);
-                    data.Add("Country", userData.FarmData.Country);
-                    data.Add("RegistrationDate", userData.User.RegistrationDate);
-                    data.Add("LastValidAccess", userData.User.LastValidAccess);
-                    data.Add("UserType", userData.User.UserType);
+                    data.Country = userData.FarmData.Country;
+                    data.FirstCharactersUserId = userData.User.FirstCharactersUserId;
+                    data.RegistrationDate = userData.User.RegistrationDate;
+                    data.LastValidAccess = userData.User.LastValidAccess;
+                    data.UserType = userData.User.UserType;
                     var dssCount = 0;
                     foreach (var dssModel in userData.FarmData.DssModels)
                     {
                         if (dssModel != null)
                         {
-                            data.Add($"ModelName{dssCount}", dssModel.ModelName);
-                            data.Add($"ModelId{dssCount}", dssModel.ModelId);
-                            dssCount = +1;
+                            var modelNameCount = $"ModelName{dssCount}";
+                            var modelIdCount = $"ModelId{dssCount}";
+                            ((IDictionary<string, object>)data)[modelNameCount] = dssModel.ModelName;
+                            ((IDictionary<string, object>)data)[modelIdCount] = dssModel.ModelId;
+                            dssCount++;
                         }
                     }
                     resultList.Add(data);
                 }
             }
-            using (var writer = new StringWriter())
+
+            var userWithMostModels = resultList.OrderByDescending(data => ((IDictionary<string, object>)data).Keys.Count).FirstOrDefault(); using (var writer = new StringWriter())
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                csv.WriteRecords(resultList);
+                var dataDict = (IDictionary<string, object>)userWithMostModels;
+                // Write the header row using dynamic property names
+                foreach (var key in dataDict.Keys)
+                {
+                    csv.WriteField(key);
+                }
+                csv.NextRecord();
+
+                foreach (var data in resultList)
+                {
+                     dataDict = (IDictionary<string, object>)data;
+                    foreach (var value in dataDict.Values)
+                    {
+                        csv.WriteField(value);
+                    }
+                    csv.NextRecord();
+                }
                 return writer.ToString();
             }
         }
