@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -146,30 +147,56 @@ namespace H2020.IPMDecisions.EML.BLL
             }
         }
 
-        private string ConvertToCsv(string data)
+        private string ConvertToCsv(string reportData)
         {
-            List<ReportUserDataJoined> dataAsObject = JsonConvert.DeserializeObject<List<ReportUserDataJoined>>(data);
-            List<ReportUserDataJoinedFlat> flatDataList = new List<ReportUserDataJoinedFlat>();
+            List<ReportUserDataJoined> dataAsObject = JsonConvert.DeserializeObject<List<ReportUserDataJoined>>(reportData);
+            var resultList = new List<ExpandoObject>();
             foreach (var userData in dataAsObject)
             {
-                foreach (var dssModel in userData.FarmData.DssModels)
+                if (userData?.FarmData != null && userData.User != null)
                 {
-                    flatDataList.Add(new ReportUserDataJoinedFlat
+                    dynamic data = new ExpandoObject() as IDictionary<string, Object>;
+                    data.Country = userData.FarmData.Country;
+                    data.FirstCharactersUserId = userData.User.FirstCharactersUserId;
+                    data.RegistrationDate = userData.User.RegistrationDate;
+                    data.LastValidAccess = userData.User.LastValidAccess;
+                    data.UserType = userData.User.UserType;
+                    var dssCount = 0;
+                    foreach (var dssModel in userData.FarmData.DssModels)
                     {
-                        Country = userData.FarmData.Country,
-                        FirstCharactersUserId = userData.User.FirstCharactersUserId,
-                        RegistrationDate = userData.User.RegistrationDate,
-                        LastValidAccess = userData.User.LastValidAccess,
-                        UserType = userData.User.UserType,
-                        ModelName = dssModel.ModelName,
-                        ModelId = dssModel.ModelId
-                    });
+                        if (dssModel != null)
+                        {
+                            var modelNameCount = $"ModelName{dssCount}";
+                            var modelIdCount = $"ModelId{dssCount}";
+                            ((IDictionary<string, object>)data)[modelNameCount] = dssModel.ModelName;
+                            ((IDictionary<string, object>)data)[modelIdCount] = dssModel.ModelId;
+                            dssCount++;
+                        }
+                    }
+                    resultList.Add(data);
                 }
             }
-            using (var writer = new StringWriter())
+
+            var userWithMostModels = resultList.OrderByDescending(data => ((IDictionary<string, object>)data).Keys.Count).FirstOrDefault(); using (var writer = new StringWriter())
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                csv.WriteRecords(flatDataList);
+                var dataDict = (IDictionary<string, object>)userWithMostModels;
+                // Write the header row using dynamic property names
+                foreach (var key in dataDict.Keys)
+                {
+                    csv.WriteField(key);
+                }
+                csv.NextRecord();
+
+                foreach (var data in resultList)
+                {
+                     dataDict = (IDictionary<string, object>)data;
+                    foreach (var value in dataDict.Values)
+                    {
+                        csv.WriteField(value);
+                    }
+                    csv.NextRecord();
+                }
                 return writer.ToString();
             }
         }
