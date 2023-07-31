@@ -131,8 +131,6 @@ namespace H2020.IPMDecisions.EML.BLL
         {
             try
             {
-                logger.LogError(internalReportDto.ToAddresses);
-                logger.LogError(internalReportDto.ReportData);
                 var toAddresses = internalReportDto.ToAddresses.Split(";").ToList();
                 var dataAsCsv = ConvertToCsv(internalReportDto.ReportData);
                 var dateTime = DateTime.Today.ToString("yyyy_MM_dd");
@@ -157,19 +155,19 @@ namespace H2020.IPMDecisions.EML.BLL
             {
                 if (userData?.FarmData != null && userData.User != null)
                 {
-                    dynamic data = new ExpandoObject();
-                    data.Country = userData.FarmData.Country;
-                    data.FirstCharactersUserId = userData.User.FirstCharactersUserId;
-                    data.RegistrationDate = userData.User.RegistrationDate;
-                    data.LastValidAccess = userData.User.LastValidAccess;
-                    data.UserType = userData.User.UserType;
+                    dynamic data = new ExpandoObject() as IDictionary<string, Object>;
+                    data.Add("FirstCharactersUserId", userData.User.FirstCharactersUserId);
+                    data.Add("Country", userData.FarmData.Country);
+                    data.Add("RegistrationDate", userData.User.RegistrationDate);
+                    data.Add("LastValidAccess", userData.User.LastValidAccess);
+                    data.Add("UserType", userData.User.UserType);
                     var dssCount = 0;
                     foreach (var dssModel in userData.FarmData.DssModels)
                     {
                         if (dssModel != null)
                         {
-                            data[$"ModelName{dssCount}"] = dssModel.ModelName;
-                            data[$"ModelId{dssCount}"] = dssModel.ModelId;
+                            data.Add($"ModelName{dssCount}", dssModel.ModelName);
+                            data.Add($"ModelId{dssCount}", dssModel.ModelId);
                             dssCount = +1;
                         }
                     }
