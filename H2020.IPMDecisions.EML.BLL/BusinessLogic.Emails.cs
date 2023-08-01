@@ -153,24 +153,27 @@ namespace H2020.IPMDecisions.EML.BLL
             var resultList = new List<ExpandoObject>();
             foreach (var userData in dataAsObject)
             {
-                if (userData?.FarmData != null && userData.User != null)
+                if (userData.User != null)
                 {
                     dynamic data = new ExpandoObject() as IDictionary<string, Object>;
-                    data.Country = userData.FarmData.Country;
                     data.FirstCharactersUserId = userData.User.FirstCharactersUserId;
                     data.RegistrationDate = userData.User.RegistrationDate;
                     data.LastValidAccess = userData.User.LastValidAccess;
                     data.UserType = userData.User.UserType;
                     var dssCount = 0;
-                    foreach (var dssModel in userData.FarmData.DssModels)
+                    if (userData?.FarmData != null)
                     {
-                        if (dssModel != null)
+                        data.Country = userData.FarmData.Country;
+                        foreach (var dssModel in userData.FarmData.DssModels)
                         {
-                            var modelNameCount = $"ModelName{dssCount}";
-                            var modelIdCount = $"ModelId{dssCount}";
-                            ((IDictionary<string, object>)data)[modelNameCount] = dssModel.ModelName;
-                            ((IDictionary<string, object>)data)[modelIdCount] = dssModel.ModelId;
-                            dssCount++;
+                            if (dssModel != null)
+                            {
+                                var modelNameCount = $"ModelName{dssCount}";
+                                var modelIdCount = $"ModelId{dssCount}";
+                                ((IDictionary<string, object>)data)[modelNameCount] = dssModel.ModelName;
+                                ((IDictionary<string, object>)data)[modelIdCount] = dssModel.ModelId;
+                                dssCount++;
+                            }
                         }
                     }
                     resultList.Add(data);
@@ -190,7 +193,7 @@ namespace H2020.IPMDecisions.EML.BLL
 
                 foreach (var data in resultList)
                 {
-                     dataDict = (IDictionary<string, object>)data;
+                    dataDict = (IDictionary<string, object>)data;
                     foreach (var value in dataDict.Values)
                     {
                         csv.WriteField(value);
