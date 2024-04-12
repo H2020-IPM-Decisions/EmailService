@@ -1,0 +1,33 @@
+{
+    "data_request": {
+        "body": " L'utilisateur {0}, souhaite accéder aux données de votre exploitation.\nVeuillez vous connecter à votre compte pour accepter ou refuser cette demande.  ",
+        "subject": "Demande d'accès à vos données IPM Decisions"
+    },
+    "forgot_password": {
+        "body": "Nous avons reçu une demande de changement de mot de passe pour votre compte. Veuillez cliquer sur le bouton ci-dessous pour réinitialiser votre mot de passe. ",
+        "button": "Réinitialiser le mot de passe",
+        "subject": "Réinitialisez votre mot de passe IPM Decisions"
+    },
+    "inactive_user": {
+        "body": "Votre compte est inactif depuis {0} mois. Ce compte sera supprimé, ainsi que toutes les données associées, à moins que vous ne vous connectiez à nouveau avant {1}. ",
+        "subject": "Compte IPM Decisions inactif"
+    },
+    "reconfirm_email": {
+        "body": "Veuillez cliquer sur le bouton ci-dessous pour confirmer votre email.",
+        "button": "Confirmez votre courriel",
+        "subject": "Veuillez confirmer votre courriel IPM Decisions"
+    },
+    "registration": {
+        "body": "Bienvenue sur IPM Decisions !\nMerci d'avoir enregistré votre compte, veuillez cliquer sur le bouton ci-dessous pour confirmer votre email. La confirmation doit être faite dans les 24 heures. ",
+        "button": "Confirmez votre e-mail",
+        "subject": "Bienvenue sur IPM Decisions"
+    },
+    "shared": {
+        "disclaimer": "Disclaimer",
+        "footer": "IPM Decisions est une plateforme automatique pour les systèmes d'aide à la décision concernant les mauvaises herbes, les ravageurs invertébrés et les maladies agricoles, développée par le projet européen IPM Decisions (817617). Les partenaires coopérants n'ont aucune responsabilité économique pour les pertes, dommages ou inconvénients résultant de l'utilisation ou de l'impossibilité d'utiliser ce service.",
+        "funding": "Ce projet a été financé par le programme Horizon 2020 de l'Union européenne. Programme de recherche et d'innovation, sous la convention de subvention numéro 817617.",
+        "greeting": "Bonjour, {0}",
+        "team": "L'équipe d'IPM Decisions",
+        "thanks": "Merci"
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "data_request": {
+        "body": "Naudotojas {0} nori pasiekti jūsų ūkio duomenis. Jei norite priimti arba atmesti šią užklausą, prisijunkite prie savo paskyros.",
+        "subject": "Prašyta prieigos prie jūsų IPM sprendimų duomenų"
+    },
+    "forgot_password": {
+        "body": "Gavome užklausą pakeisti jūsų paskyros slaptažodį. Norėdami iš naujo nustatyti slaptažodį, spustelėkite žemiau esantį mygtuką.",
+        "button": "Slaptažodį nustatyti iš naujo",
+        "subject": "Iš naujo nustatykite 'IKOK/ IPM sprendimai' slaptažodį"
+    },
+    "inactive_user": {
+        "body": "Jūsų paskyra buvo neaktyvi {0} mėnesių. Ši paskyra bus ištrinta kartu su visais susijusiais duomenimis, nebent vėl prisijungsite iki {1}.",
+        "subject": "IKOK/ IPM sprendimai' neaktyvi paskyra"
+    },
+    "reconfirm_email": {
+        "body": "Spustelėkite apačioje esantį mygtuką, kad patvirtintumėte savo el. pašto adresą.",
+        "button": "Patvirtinkite el. pašto adresą",
+        "subject": "Patvirtinkite 'IKOK/IPM sprendimai' el. paštą"
+    },
+    "registration": {
+        "body": "Sveiki atvykę į 'IKOK/IPM sprendimai!'. Dėkojame, kad užregistravote jūsų paskyrą. Spustelėkite apačioje esantį mygtuką, kad patvirtintumėte savo el. pašto adresą. Patvirtinimas turi būti atliktas per 24 valandas. “",
+        "button": "Patvirtinkite el. pašto adresą",
+        "subject": "Sveiki atvykę į 'IKOK/IPM sprendimai'"
+    },
+    "shared": {
+        "disclaimer": "Atsisakymas",
+        "footer": "IKOK/ IPM sprendimai'  yra automatinė sprendimų paramos sistemų (SPS) platforma, skirta žemės ūkio piktžolių,  kenkėjų ir ligų kontrolei, sukurta pagal ES 'IKOK/ IPM sprendimai'  projektą (817617). Bendradarbiaujantys partneriai neprisiima jokios ekonominės atsakomybės už nuostolius, žalą ar nepatogumus, kylančius dėl naudojimosi šia paslauga ar negalėjimo ja naudotis.",
+        "funding": "Šis projektas finansuotas  Europos Sąjungos mokslinių tyrimų ir inovacijų finansavimo programos „Horizontas 2020“ .  Dotacijos sutarties numerį 817617.",
+        "greeting": "Sveiki, {0}",
+        "team": "IKOK/IPM sprendimai' komanda",
+        "thanks": "Ačiū"
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "data_request": {
+        "body": "De gebruiker {0}, wil graag toegang tot uw bedrijfsgegevens.\n Log aub in op uw computer om dit te wel of niet toe te staan.",
+        "subject": "Toegang gevraagd tot uw IPM Decisions gegevens"
+    },
+    "forgot_password": {
+        "body": "We hebben een verzoek ontvangen om het wachtwoord te veranderen voor uw account. Aub klik op de knop hieronder om uw wachtwoord te veranderen. ",
+        "button": "Verander wachtwoord",
+        "subject": "Verander uw IPM Decisions wachtwoord"
+    },
+    "inactive_user": {
+        "body": "Uw account was inactief voor {0} maanden. Dit account wordt verwijderd, inclusief alle data die hier bij horen, tenzij u opnieuw inlogt voor {1}.",
+        "subject": "IPM Decisions inactief account"
+    },
+    "reconfirm_email": {
+        "body": "Klik aub op de onderstaande knpt om uw e-mail te bevestigen.",
+        "button": "Bevestig uw e-mail",
+        "subject": "Bevestig aub uw IPM Decisions e-mail"
+    },
+    "registration": {
+        "body": "Welkom op het IPM Decisions platform!\n Bedankt voor het registreren  van uw account, klik aub op de knop hieronder om uw e-mail te bevestigen. Bevestigen moet binnen 24 uur plaatsvinden.",
+        "button": "Bevestig uw e-mail",
+        "subject": "Welkom bij IPM Decisions"
+    },
+    "shared": {
+        "disclaimer": "Disclaimer",
+        "footer": "IPM Decisions is een geautomatiseerd platform voor Beslissing Ondersteunende Systemen (BOS'en) voor onkruiden, ziekten en plagen, ontwikkeld door het EU IPM Decisions project (817617). De samenwerkende partners hebben zijn niet aansprakelijk voor opgetreden verliezen, schade of anderszins die voortkomen uit het gebruik van de platform services.",
+        "funding": "Dit project is gefinancierd door het Horizon 2020 programma van de Europese Unie . Programma voor Research and Innovation, onder grant agreement nummer 817617",
+        "greeting": "Hallo, {0}",
+        "team": "Het IPM Decisions Team",
+        "thanks": "TDank u wel"
+    }
+}

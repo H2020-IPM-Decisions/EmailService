@@ -1,2 +1,2 @@
 # EmailService
-Microservice in charge to manage coomuncation with email service
+Microservice in charge to manage communication with email service

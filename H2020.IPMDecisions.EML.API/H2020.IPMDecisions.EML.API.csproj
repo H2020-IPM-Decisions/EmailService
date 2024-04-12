@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Version>1.24.0.0</Version>
+    <AssemblyVersion>1.24.0.0</AssemblyVersion>
+    <FileVersion>1.24.0.0</FileVersion>
+    <Authors>ADAS Modelling and Informatics Team</Authors>
+    <Company>RSK ADAS Ltd</Company>
+    <Product>H2020 IPM Decisions Email Service</Product>
+    <PackageId>H2020.IPMDecisions.EML.API</PackageId>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Description>Service in charge of sending emails for the H2020 IPM Decisions project.</Description>
+    <Copyright>Under GNU GENERAL PUBLIC LICENSE</Copyright>
+    <PackageTags>H2020, IPM Decisions, Email Provider</PackageTags>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
+	<PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\H2020.IPMDecisions.EML.Core\H2020.IPMDecisions.EML.Core.csproj" />
+    <ProjectReference Include="..\H2020.IPMDecisions.EML.BLL\H2020.IPMDecisions.EML.BLL.csproj" />
+  </ItemGroup>
+</Project>

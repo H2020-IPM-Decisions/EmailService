@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Version>1.24.0.0</Version>
+    <AssemblyVersion>1.24.0.0</AssemblyVersion>
+    <FileVersion>1.24.0.0</FileVersion>
+    <Authors>ADAS Modelling and Informatics Team</Authors>
+    <Company>RSK ADAS Ltd</Company>
+    <Product>H2020 IPM Decisions Email Service</Product>
+    <PackageId>H2020.IPMDecisions.EML.Core</PackageId>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Description>Service in charge of emails for the H2020 IPM Decisions project.</Description>
+    <Copyright>Under GNU GENERAL PUBLIC LICENSE</Copyright>
+    <PackageTags>H2020, IPM Decisions, Email Provider</PackageTags>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="EmailTemplates\ForgotPasswordEmailTemplate.cshtml" />
+    <None Remove="EmailTemplates\RegistrationEmailTemplate.cshtml" />
+    <None Remove="EmailTemplates\ReConfirmEmailEmailTemplate.cshtml" />
+    <None Remove="EmailTemplates\DataShareEmailTemplate.cshtml" />
+    <None Remove="EmailTemplates\InactiveUserEmailTemplate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EmailTemplates\ForgotPasswordEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmailTemplates\RegistrationEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmailTemplates\ReConfirmEmailEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmailTemplates\DataShareEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmailTemplates\InactiveUserEmailTemplate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="RazorLight" Version="2.3.1" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="EmailTemplates\EmailTemplates.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+</Project>
