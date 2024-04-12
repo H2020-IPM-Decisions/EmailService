@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS base
 
 ARG URL_EXPOSE_PORT=80
 ARG URL_EXPOSE_PORT_HTTPS=443
@@ -14,7 +14,7 @@ WORKDIR /app
 EXPOSE ${URL_EXPOSE_PORT}
 EXPOSE ${URL_EXPOSE_PORT_HTTPS}
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["H2020.IPMDecisions.EML.API/H2020.IPMDecisions.EML.API.csproj", "H2020.IPMDecisions.EML.API/"]
 COPY ["H2020.IPMDecisions.EML.API/appsettingsTemplate.json", "H2020.IPMDecisions.EML.API/appsettings.json"]

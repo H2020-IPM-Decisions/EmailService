@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using H2020.IPMDecisions.EML.BLL.Helpers;
 using H2020.IPMDecisions.EML.BLL;
-using AutoMapper;
 using H2020.IPMDecisions.EML.Core.Profiles;
 using H2020.IPMDecisions.EML.BLL.Providers;
 using H2020.IPMDecisions.EML.API.Filters;

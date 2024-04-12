@@ -1,13 +1,13 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H2020.IPMDecisions.EML.API", "H2020.IPMDecisions.EML.API\H2020.IPMDecisions.EML.API.csproj", "{5FB14905-968A-4783-BE7E-42E224301F12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H2020.IPMDecisions.EML.API", "H2020.IPMDecisions.EML.API\H2020.IPMDecisions.EML.API.csproj", "{5FB14905-968A-4783-BE7E-42E224301F12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H2020.IPMDecisions.EML.Core", "H2020.IPMDecisions.EML.Core\H2020.IPMDecisions.EML.Core.csproj", "{3340A353-10CD-4241-8A61-243C5294300C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H2020.IPMDecisions.EML.Core", "H2020.IPMDecisions.EML.Core\H2020.IPMDecisions.EML.Core.csproj", "{3340A353-10CD-4241-8A61-243C5294300C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H2020.IPMDecisions.EML.BLL", "H2020.IPMDecisions.EML.BLL\H2020.IPMDecisions.EML.BLL.csproj", "{6BE1D7FC-8296-4DFF-B4DF-0C58732C00C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H2020.IPMDecisions.EML.BLL", "H2020.IPMDecisions.EML.BLL\H2020.IPMDecisions.EML.BLL.csproj", "{6BE1D7FC-8296-4DFF-B4DF-0C58732C00C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

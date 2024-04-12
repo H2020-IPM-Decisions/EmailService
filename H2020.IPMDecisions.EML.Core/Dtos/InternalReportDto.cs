@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
 
 namespace H2020.IPMDecisions.EML.Core.Dtos
 {
