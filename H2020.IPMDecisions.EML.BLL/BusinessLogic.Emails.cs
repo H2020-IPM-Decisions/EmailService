@@ -105,6 +105,12 @@ namespace H2020.IPMDecisions.EML.BLL
             }
         }
 
+        public async Task<GenericResponse> AddEmailToQueue(InactiveUserDto inactiveUserDto)
+        {
+            emailQueue.Add(inactiveUserDto);
+            return GenericResponseBuilder.Success();
+        }
+
         public async Task<GenericResponse> SendInactiveUserEmail(InactiveUserDto inactiveUserDto)
         {
             try

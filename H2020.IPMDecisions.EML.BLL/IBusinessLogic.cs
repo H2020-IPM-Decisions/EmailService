@@ -12,6 +12,7 @@ namespace H2020.IPMDecisions.EML.BLL
         Task<GenericResponse> SendRegistrationEmail(RegistrationEmailDto registrationEmail);
         Task<GenericResponse> ResendConfirmationEmail(RegistrationEmailDto registrationEmail);
         Task<GenericResponse> SendInactiveUserEmail(InactiveUserDto inactiveUserDto);
+        Task<GenericResponse> AddEmailToQueue(InactiveUserDto inactiveUserDto);
         #endregion
 
         #region Emailing List
