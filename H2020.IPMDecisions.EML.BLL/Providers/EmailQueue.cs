@@ -52,7 +52,10 @@ public sealed class EmailQueue : IEmailQueue
 
                 if(inactiveUserDto != null)
                 {
+                    Console.WriteLine($"The email sent to: {inactiveUserDto.ToAddress} has begun being processed.");
+                    Thread.Sleep(5000);
                     var emailSendResponse = await processor(inactiveUserDto);
+                    Console.WriteLine($"The email sent to: {inactiveUserDto.ToAddress} has been processed");
                     if(!emailSendResponse.IsSuccessful)
                     {
                         QueueDataStructure.Add(inactiveUserDto);
