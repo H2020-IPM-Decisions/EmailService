@@ -89,7 +89,7 @@ namespace H2020.IPMDecisions.EML.API.Controllers
                 return Ok();
 
             return
-             BadRequest(new { message = response.ErrorMessage });
+                BadRequest(new { message = response.ErrorMessage });
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
