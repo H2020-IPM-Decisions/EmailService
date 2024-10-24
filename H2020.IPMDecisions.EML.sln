@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H2020.IPMDecisions.EML.API", "H2020.IPMDecisions.EML.API\H2020.IPMDecisions.EML.API.csproj", "{5FB14905-968A-4783-BE7E-42E224301F12}"
 EndProject
@@ -17,9 +16,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5FB14905-968A-4783-BE7E-42E224301F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +54,11 @@ Global
 		{6BE1D7FC-8296-4DFF-B4DF-0C58732C00C8}.Release|x64.Build.0 = Release|Any CPU
 		{6BE1D7FC-8296-4DFF-B4DF-0C58732C00C8}.Release|x86.ActiveCfg = Release|Any CPU
 		{6BE1D7FC-8296-4DFF-B4DF-0C58732C00C8}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1634D15E-7918-4A31-AFC0-AB774DD67B95}
 	EndGlobalSection
 EndGlobal

@@ -36,8 +36,8 @@ public sealed class EmailQueue : IEmailQueue
 
     public void BeginProcessing(Func<InactiveUserDto, Task<GenericResponse>> processor)
     {
-        Task.Run(async () =>
-        {
+        Task.Factory.StartNew(() => {
+        
             while(!QueueDataStructure.IsCompleted)
             {
                 InactiveUserDto inactiveUserDto = null;
@@ -52,18 +52,10 @@ public sealed class EmailQueue : IEmailQueue
 
                 if(inactiveUserDto != null)
                 {
-                    Console.WriteLine($"The email sent to: {inactiveUserDto.ToAddress} has begun being processed.");
-                    Thread.Sleep(5000);
-                    var emailSendResponse = await processor(inactiveUserDto);
-                    Console.WriteLine($"The email sent to: {inactiveUserDto.ToAddress} has been processed");
-                    if(!emailSendResponse.IsSuccessful)
-                    {
-                        QueueDataStructure.Add(inactiveUserDto);
-                    }
+                    processor(inactiveUserDto);
                 }
             }
-            Console.WriteLine("Queue has been processed");
-        });
+        }, TaskCreationOptions.LongRunning);
     }
     public void Add(InactiveUserDto inactiveUserDto)
     {
