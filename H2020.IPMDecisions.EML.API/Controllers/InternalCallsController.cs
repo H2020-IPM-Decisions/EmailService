@@ -89,6 +89,21 @@ namespace H2020.IPMDecisions.EML.API.Controllers
                 return Ok();
 
             return
+                BadRequest(new { message = response.ErrorMessage });
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost("AddInactiveUserToQueue", Name = "AddInactiveUserToQueue")]
+        // POST: api/internalcall/AddInactiveUserToQueue
+        public IActionResult AddInactiveUserToQueue([FromBody] InactiveUserDto inactiveUserDto)
+        {
+            var response = businessLogic.AddEmailToQueue(inactiveUserDto);
+
+            if(response.IsSuccessful)
+                return Ok();
+
+            return
              BadRequest(new { message = response.ErrorMessage });
         }
 
