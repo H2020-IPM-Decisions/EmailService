@@ -354,3 +354,4 @@ MigrationBackup/
 H2020.IPMDecisions.EML.API/appsettings.json
 H2020.IPMDecisions.EML.API/Controllers/TestController.cs
 H2020.IPMDecisions.EML.API/appsettings.local.json
+/H2020.IPMDecisions.EML.API/appsettings.Development.json

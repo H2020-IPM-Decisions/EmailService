@@ -105,6 +105,12 @@ namespace H2020.IPMDecisions.EML.BLL
             }
         }
 
+        public GenericResponse AddEmailToQueue(InactiveUserDto inactiveUserDto)
+        {
+            emailQueue.Add(inactiveUserDto);
+            return GenericResponseBuilder.Success();
+        }
+
         public async Task<GenericResponse> SendInactiveUserEmail(InactiveUserDto inactiveUserDto)
         {
             try
@@ -134,7 +140,7 @@ namespace H2020.IPMDecisions.EML.BLL
                 var toAddresses = internalReportDto.ToAddresses.Split(";").ToList();
                 var dataAsCsv = ConvertToCsv(internalReportDto.ReportData);
                 var dateTime = DateTime.Today.ToString("yyyy_MM_dd");
-                var body = string.Format(@"<p>Report for this week {0} attached.</p>                
+                var body = string.Format(@"<p>Report for this week {0} attached.</p>
                 Thanks", dateTime);
                 var subject = string.Format("IPM Decisions Report user week {0}", dateTime);
                 await emailSender.SendEmailWithAttachmentAsync(toAddresses, subject, body, dataAsCsv);
