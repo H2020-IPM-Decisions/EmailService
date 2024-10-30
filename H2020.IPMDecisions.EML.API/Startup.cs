@@ -45,9 +45,8 @@ namespace H2020.IPMDecisions.EML.API
             services.AddDistributedMemoryCache();
             services.AddSingleton<IJsonStringLocalizer, JsonStringLocalizer>();
             services.AddSingleton<IJsonStringLocalizerProvider, JsonStringLocalizerProvider>();
-            services.AddScoped<IBusinessLogic, BusinessLogic>();
-
             services.AddSingleton<IEmailQueue, EmailQueue>();
+            services.AddScoped<IBusinessLogic, BusinessLogic>();
 
             services.ConfigureSwagger();
         }

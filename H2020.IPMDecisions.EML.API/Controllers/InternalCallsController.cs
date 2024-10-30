@@ -96,9 +96,9 @@ namespace H2020.IPMDecisions.EML.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost("AddInactiveUserToQueue", Name = "AddInactiveUserToQueue")]
         // POST: api/internalcall/AddInactiveUserToQueue
-        public async Task<IActionResult> AddInactiveUserToQueue([FromBody] InactiveUserDto inactiveUserDto)
+        public IActionResult AddInactiveUserToQueue([FromBody] InactiveUserDto inactiveUserDto)
         {
-            var response = await businessLogic.AddEmailToQueue(inactiveUserDto);
+            var response = businessLogic.AddEmailToQueue(inactiveUserDto);
 
             if(response.IsSuccessful)
                 return Ok();
